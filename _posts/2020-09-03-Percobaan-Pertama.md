@@ -3,8 +3,8 @@ layout: post
 title: Percobaan Pertama
 ---
 
-<spoiler= Hai anda siapa>
+[spoiler= Hai anda siapa]
 
 boobooo
 
-</spoiler>
+[/spoiler]
