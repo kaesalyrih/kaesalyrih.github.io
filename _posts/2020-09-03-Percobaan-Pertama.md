@@ -5,8 +5,6 @@ title: Percobaan Pertama
 
 Berikut adalah daftar Event Toram Online yang [**Kaesa Lyrih**][1] kumpulkan selama bermain Toram Online.
 
-[spoiler=**Standart Operasional Prosedure (SOP)**]
-
 **Keterangan:**  
 01.01 = Bulan Event. Event yang ke-01
 
@@ -30,7 +28,6 @@ Berikut adalah daftar Event Toram Online yang [**Kaesa Lyrih**][1] kumpulkan sel
 | 98 | Hiden Boss |
 | 91 | Event Boss High Difficulty |
 | 92 | Event Kolaborasi |
-[/spoiler]
 
 ---
 
@@ -39,7 +36,6 @@ Berikut adalah daftar Event Toram Online yang [**Kaesa Lyrih**][1] kumpulkan sel
 Berikut adalah Daftar Acara Tahunan Toram Online yang telah [**Kaesa Lyrih**][1] kumpulkan selama bermain game ini.  
 Postingan ini masih **_prototype_** jadi belum lengkap. Fungsi dari postingan ini untuk mempermudah pencarian Event Toram Online tanpa harus **_search_** dan **_scroll_** lebih lanjut.
 
-[spoiler=**Daftar Event Tahunan Toram Online**]
 
 | Kode | Keterangan | Dimulai |
 |:----:|:----:|:----:|
@@ -57,14 +53,11 @@ Postingan ini masih **_prototype_** jadi belum lengkap. Fungsi dari postingan in
 | 06.02 | [Event Musim Hujan (Rainy Season)](#event_musim_hujan) | Juni. Event ke-2 |
 | 06.03 | [Event Battle Bos Monster Tingkat Kesulitan Tinggi (High Difficulty Boss Monster Battle)](#event_battle_bos_monster_tingkat_kesulitan_tinggi) | Juni. Event ke-3 |
 | 06.04 | [Hitung Mundur Dirgahayu (Anniversary Countdown)](#hitung_mundur_dirgahayu) | Juni. Event ke-4 |
-[/spoiler]
 
 
 ---
 
 ##### {#event_hatsumode}
-
-[spoiler=**01.01 Event Hatsumode**]
 
 | Event Hatsumode |
 |:----:|
@@ -72,12 +65,10 @@ Postingan ini masih **_prototype_** jadi belum lengkap. Fungsi dari postingan in
 | 01.00 Tentang & Sejarah |
 | 04.01 Daftar FAQ [Fanpage] |
 | 04.02 Daftar FAQ [Group] |
-[/spoiler]
-
-
 
 
 `Label`
+
 [1]: https://web.facebook.com/lyrihkaesa
 [2]: https://web.facebook.com/group/kaesatoramonline
 [3]: https://line.me/ti/p/~lyrihkaesa
