@@ -57,7 +57,7 @@ Postingan ini masih **_prototype_** jadi belum lengkap. Fungsi dari postingan in
 
 ---
 
-##### {#event_hatsumode}
+##### . {#event_hatsumode}
 
 | Event Hatsumode |
 |:----:|
@@ -69,7 +69,7 @@ Postingan ini masih **_prototype_** jadi belum lengkap. Fungsi dari postingan in
 
 `Label`
 
-[1]: https://web.facebook.com/lyrihkaesa
+[1]: https://web.facebook.com/.official
 [2]: https://web.facebook.com/group/kaesatoramonline
 [3]: https://line.me/ti/p/~lyrihkaesa
 [4]: https://wa.me/+6282340882052 
