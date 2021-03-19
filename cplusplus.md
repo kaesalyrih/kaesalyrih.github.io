@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Belajar C++ (cplusplus)
-permalink: /C++/
+permalink: /cpp/
 ---
 
 # 📚 Kaesa Informasi Dasar
