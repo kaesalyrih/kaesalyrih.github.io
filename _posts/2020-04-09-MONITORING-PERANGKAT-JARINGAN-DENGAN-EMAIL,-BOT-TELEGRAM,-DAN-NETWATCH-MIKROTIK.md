@@ -35,9 +35,9 @@ Agar router dapat mengirimkan email, kita perlu setting email server di menu **�
 
 **Script:**
 
-```
+``
 /tool e-mail set address=74.125.68.109 port=587 user=(Email Anda) password=(Password Email Anda) start-tls=yes from=(Nama Pengirim)
-```
+``
 
 Sebelum lanjut atur dulu pengamanan email yang anda berikan pada mikrotik, berikut:
  
@@ -55,17 +55,17 @@ Contoh untuk script yang akan dijalankan ketika status berbah menjadi "UP".
  
 **Script "UP":**
 
-```
+``
 /tool e-mail send to=(Email Tujuan) subjec="Router UP" body=("Router UP ".[/system clock get time]."") start-tls=yes
-```
+``
 
 Dan script pada tab "Down" akan dijalankan jika host tidak dapat di ping dari router. 
  
 **Script "Down":**
 
-```
+``
 /tool e-mail send to=(Email Tujuan) subjec="Router UP" body=("Router UP ".[/system clock get time]."") start-tls=yes
-```
+``
 
 Dengan script diatas, router akan segera mengirikan notifikasi email pada saat host down dan juga akan mengirimkan email notifikasi pada saat router kembali up.
  
@@ -107,14 +107,14 @@ Apabila berhasil pesan akan masuk ke telegram anda
 
 Setelah proses membuat bot berhasil kita tinggal memasukkannya kedalam netwach dengan Skrip:
 
-```
+``
 :local CHID "XXXXXXXX"; (chat id)
 :local BotID "XXXXXXXX-XXXXXXXXXXXXXXXXXXXXX"; (token dari BotFather)
 :local HostStatus "down"; (untuk tab down) & "up"; (untuk tab up)
 :local message "Ping $host $HostStatus";
 /tool fetch url="https://api.telegram.org/bot$BotID/sendmessage\?chat_id=$CHID&text=$message";
-```
- 
+``
+
 Anda bisa membukanya dengan cara masuk ke Winbox menu “Tools” -> “Netwatch”.
  
 Untuk menguji apakah skrip yang di masukkan kedalam netwach berjalan dengan baik anda bisa mencobanya dengan men-disable dan men-enable kan saja.
@@ -126,7 +126,7 @@ Script ini akan otomatis memonitoring client yang terhubung ke DHCP Server Lease
 
 **Script di DHCP Server:**
 
-```
+``
 :if ($leaseBound = "1") do={/tool netwatch add interval=00:00:05 down-script=":local BotID \"921464062:AAEbClkWr_r2dP5YBaVL009wRtOXb1Y_C6Q\
     \";\r\
     \n:local CHID \"-307150890\";\r\
@@ -201,7 +201,7 @@ Script ini akan otomatis memonitoring client yang terhubung ke DHCP Server Lease
 } else={
 /tool netwatch remove [find host=$leaseActIP]
 }
-```
+``
 
 Simpan Script ini di DHCP Server lalu pilih DHCP Server yang akan di Monitoring
  
