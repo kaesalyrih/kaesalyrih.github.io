@@ -126,7 +126,7 @@ Script ini akan otomatis memonitoring client yang terhubung ke DHCP Server Lease
 
 **Script di DHCP Server:**
 
-``
+`
 :if ($leaseBound = "1") do={/tool netwatch add interval=00:00:05 down-script=":local BotID \"921464062:AAEbClkWr_r2dP5YBaVL009wRtOXb1Y_C6Q\
     \";\r\
     \n:local CHID \"-307150890\";\r\
@@ -201,7 +201,7 @@ Script ini akan otomatis memonitoring client yang terhubung ke DHCP Server Lease
 } else={
 /tool netwatch remove [find host=$leaseActIP]
 }
-``
+`
 
 Simpan Script ini di DHCP Server lalu pilih DHCP Server yang akan di Monitoring
  
