@@ -123,15 +123,18 @@ td, th {
 	vertical-align: top;
 }
 
-code {
-	background: #252525;
-	color: #E2E2E2;
+pre {
+	background-color: #252525;
 }
 
 highlight {
-	background-color: #efefef;
+	background-color: #252525;
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
+}
+
+code {
+	color: #E2E2E2;
 }
 
 strong, b {
