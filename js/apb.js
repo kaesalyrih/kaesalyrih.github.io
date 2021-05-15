@@ -6,14 +6,14 @@ var app = new Vue({
         str: 1,
         int: 1,
         vit: 1,
-        dex: 1,
+        dex: 292,
         agi: 1,
-        tec: 0,
+        tec: 255,
         luk: 0,
 
         // status masakan....................................................
         foodSTR: 0,
-        foodDEX: 0,
+        foodDEX: 22,
         foodINT: 0,
 
         // status perlengkapan....................................................
@@ -105,8 +105,8 @@ var app = new Vue({
 
 
         // level kemahiran tempa....................................................
-        lvKemahiranTempa: 0,
-        lvKemahiranPadu: 0,
+        lvKemahiranTempa: 187,
+        lvKemahiranPadu: 150,
 
         // skill pandai besi & alkimia....................................................
         lvProsesMaterial: 0,
@@ -135,19 +135,19 @@ var app = new Vue({
 
         // skill alkimia....................................................
         // skill bejana
-        lvBejanaPemula: 0,
-        lvBejanaPerajin: 0,
-        lvBejanaPakarPadu: 0,
-        lvBejanaPro: 0,
+        lvBejanaPemula: 5,
+        lvBejanaPerajin: 5,
+        lvBejanaPakarPadu: 10,
+        lvBejanaPro: 10,
         // skill padu item
-        lvPaduItem: 0,
-        lvSintesisSedang: 0,
-        lvSintesisKlasTinggi: 0,
-        lvSintesisAhli: 0,
+        lvPaduItem: 10,
+        lvSintesisSedang: 10,
+        lvSintesisKlasTinggi: 10,
+        lvSintesisAhli: 10,
         // skill padu perlengkapan
-        lvPaduPerlengkapan: 0,
-        lvTeknikSintesisI: 0,
-        lvTeknikSintesisII: 0,
+        lvPaduPerlengkapan: 5,
+        lvTeknikSintesisI: 5,
+        lvTeknikSintesisII: 6,
         // kemahiran & keterampilan padu
         dasarKemahiranPadu: 50,
         dasarKeterampilanPadu: 50,
@@ -162,6 +162,10 @@ var app = new Vue({
     },
     computed: {
         // perhitungan status lengkap............................................
+        // total status
+        totalStatusKarakter: function() {
+            return hasil = Number(this.str)+Number(this.int)+Number(this.vit)+Number(this.agi)+Number(this.dex)+Number(this.tec)+Number(this.luk)
+        },
         // STR perlengkapan flat
         totalPerlengkapanSTRflat1: function() {
             return hasil = Number(this.weapSTRflat)+Number(this.subWeapSTRflat)+Number(this.armSTRflat)+Number(this.additionalSTRflat)+Number(this.specialSTRflat)
@@ -512,20 +516,21 @@ var app = new Vue({
             return hasil.toFixed(2)
         },
         srLock1: function(lock) {
-            if (lock = 1) {
-                return hasil = Number(this.lock1)
-            }
-            else if (lock = 2) {
-                return hasil = Number(this.lock2)
-            }
-            else if (lock = 3) {
-                return hasil = Number(this.lock3)
+            lock = Number(lock)
+            if (lock = 5) {
+                return hasil = Number(this.lock5)
             }
             else if (lock = 4) {
                 return hasil = Number(this.lock4)
             }
-            else {
-                return hasil = Number(this.lock5)
+            else if (lock = 3) {
+                return hasil = Number(this.lock3)
+            }
+            else if (lock = 2) {
+                return hasil = Number(this.lock2)
+            }
+            else if (lock = 1) {
+                return hasil = Number(this.lock1)
             }
         },
 
