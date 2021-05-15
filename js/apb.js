@@ -488,7 +488,8 @@ var app = new Vue({
 
         // lock / padu perlengkapan
         lock: function() {
-            return hasil = Number(Math.floor(this.lvKemahiranPadu/50))+1
+            let a = Number(Math.floor(this.lvKemahiranPadu))/50 + 1
+            return hasil = Number(Math.min(a, 5))
         },
         lock1: function() {
             let a = Number(this.totalKeterampilanPadu)/Number(this.pty1)
@@ -515,25 +516,24 @@ var app = new Vue({
             let hasil = Number(Math.min(a, 100))
             return hasil.toFixed(2)
         },
-        srLock1: function(lock) {
-            lock = Number(lock)
-            if (lock = 5) {
-                return hasil = Number(this.lock5)
+        srLock1: function() {
+            var a = this.lock;
+            if (a == 5) {
+                return hasil = this.lock5
+            } 
+            else if (a == 4) {
+                return hasil = this.lock4
             }
-            else if (lock = 4) {
-                return hasil = Number(this.lock4)
+            else if (a == 3) {
+                return hasil = this.lock3
             }
-            else if (lock = 3) {
-                return hasil = Number(this.lock3)
+            else if (a == 2) {
+                return hasil = this.lock2
             }
-            else if (lock = 2) {
-                return hasil = Number(this.lock2)
-            }
-            else if (lock = 1) {
-                return hasil = Number(this.lock1)
+            else if (a == 1) {
+                return hasil = this.lock1
             }
         },
-
 
     },
     methods: {
@@ -549,6 +549,6 @@ var app = new Vue({
             b = Number(b)
             var c = a + b
             return Number(c)
-        }
+        },
     }
 });
