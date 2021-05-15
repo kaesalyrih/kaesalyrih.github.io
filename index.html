@@ -1,18 +1,1733 @@
----
-layout: default
----
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+    <title>Kaesa Kal A&PB</title>
+  </head>
+  <body style="background-color: lightsteelblue;">
+    <div class="container" style="background-color: blue;" id="app">
+        <h1 class="p-2 text-white">Kalkulator Alkimia & Pandai Besi {{versiKalkulator}}</h1>
+        <div class="row">
+            <!-- Bagian Kiri -->
+            <div class="col-md-5 bg-secondary">
+                <!-- Bagian Kiri Status Karakter -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Status Karakter</h3>
+                    </div>
+                    <div class="card-title">    
+                        <table class="card-table table table-striped">
+                            <tr>
+                                <th> STR </th>
+                                <td> <input class="form-control col-4" type="number" id="STR" v-model="str" > </td>
+                            </tr>
+                            <tr>
+                                <th> INT </th>
+                                <td> <input class="form-control col-4" type="number" id="INT" v-model="int" > </td>
+                            </tr>
+                            <tr>
+                                <th> VIT </th>
+                                <td> <input class="form-control col-4" type="number" id="VIT" v-model="vit" > </td>
+                            </tr>
+                            <tr>
+                                <th> AGI </th>
+                                <td> <input class="form-control col-4" type="number" id="AGI" v-model="agi" > </td>
+                            </tr>
+                            <tr>
+                                <th> DEX </th>
+                                <td> <input class="form-control col-4" type="number" id="DEX" v-model="dex" > </td>
+                            </tr>
+                
+                            <tr>
+                                <th> TEC </th>
+                                <td> <input class="form-control col-4" type="number" id="TEC" v-model="tec" > </td>
+                            </tr>
+                
+                            <tr>
+                                <th> LUK </th>
+                                <td> <input class="form-control col-4" type="number" id="luk" v-model="luk" > </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+                <!-- Bagian Kiri Skill Karakter -->
+                <div class="card mt-3 mb-3">
+                    <div class="card-header">
+                        <h3>Skill Karakter</h3>
+                    </div>
+                        <div class="card-title p-1">
+                            <table class="table table-bordered table-striped">
+                                <th colspan="3">Proses Material (Process Materials)</th>
+                                <tr>
+                                    <td><img src="https://toram-id.info/img/skill/smith/processmaterials.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                    <td><strong>Level</strong><input class="form-control" type="number" v-model="lvProsesMaterial"></td>
+                                    <td><strong>Proses Bahan (%)</strong><input class="form-control col-6" disabled="disabled" v-model="prosesBahan"></td>
+                                </tr>
+                            </table>
+                            <div class="card bg-danger">
+                                <div class="card-header">
+                                    <h5>Skill Pandai Besi (Smith)</h5>
+                                </div>
+                                <div class="card-title p-1">
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#anvil, #buatperlengkapan, #perkuatperlengkapan, #tempa" aria-expanded="false" aria-controls="perkuatperlengkapan, tempa, buatperlengkapan, anvil">
+                                            Semua Pandai Besi [{{totalPoinSkillPandaiBesi}}]
+                                        </button>
+                                    </div>
+                                    
+                                    <hr class="my-2">
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+                                    <!-- Anvil -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#anvil" aria-expanded="false" aria-controls="anvil">
+                                            Anvil (Anvil) [{{totalPoinSkillAnvil}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="anvil">
+                                    <table class="table table-bordered table-striped">
+                                        <th colspan="2">Anvil Pemula (Novice's Anvil)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/noviceanvil.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvAnvilPemula"></td>
+                                        </tr>
+                                        <th colspan="2">Anvil Perajin (Craftsman's Anvil)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/craftsmananvil.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvAnvilPerajin"></td>
+                                        </tr>
+                                        <th colspan="2">Anvil Pandai Besi (Blacksmith's Anvil)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/blacksmithanvil.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvAnvilPandaiBesi"></td>
+                                        </tr>
+                                        <th colspan="2">Anvil Pro (Master's Anvil)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/thumb/anvil-pro-masters-anvil29.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvAnvilPro"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+
+                                    <hr class="my-2">
+    
+                                    <!-- Tempa -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#tempa" aria-expanded="false" aria-controls="tempa">
+                                            Tempa Perlengkapan (Refine Equipment) [{{totalPoinSkillTempaPerlengkapan}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="tempa">
+                                    <table class="table table-bordered table-striped table-secondary">
+                                        <th colspan="2">Tempa Perlengkapan (Refine Equipment)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvTempaPerlengkapan"></td>
+                                        </tr>
+                                        <th colspan="2">Tempaan Sedang (Mid-Class Refinement)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvTempaanSedang"></td>
+                                        </tr>
+                                        <th colspan="2">Tempaan Kelas Tinggi (High-Class Refinement)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvTempaanKelasTinggi"></td>
+                                        </tr>
+                                        <th colspan="2">Tempaan Ahli (Expert's Refinement)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvTempaanAhli"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+
+                                    <hr class="my-2">
+    
+                                    <!-- Buat Perlengkapan -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#buatperlengkapan" aria-expanded="false" aria-controls="buatperlengkapan">
+                                            Buat Perlengkapan (Create Equipment) [{{totalPoinSkillBuatPerlengkapan}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="buatperlengkapan">
+                                    <table class="table table-bordered table-striped">
+                                        <th colspan="2">Buat Perlengkapan (Create Equipment)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/createeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvBuatPerlengkapan"></td>
+                                        </tr>
+                                        <th colspan="2">Kreasi Cermat (Careful Creation)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/createeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvKreasiCermat"></td>
+                                        </tr>
+                                        <th colspan="2">Kreasi Ahli (Expert's Creation)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/createeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvKreasiAhli"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+
+                                    <hr class="my-2">
+
+                                    <!-- Perkuat Perlengkapan -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#perkuatperlengkapan" aria-expanded="false" aria-controls="perkuatperlengkapan">
+                                            Perkuat Perlengkapan (Customize Equipment) [{{totalPoinSkillPerkuatPerlengkapan}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="perkuatperlengkapan">
+                                    <table class="table table-bordered table-striped table-secondary">
+                                        <th colspan="2">Perkuat Perlengkapan (Customize Equipment)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/customizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvPerkuatPerlengkapan"></td>
+                                        </tr>
+                                        <th colspan="2">Penguatan Akurat (Accurate Customization)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/customizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvPenguatanAkurat"></td>
+                                        </tr>
+                                        <th colspan="2">Penguatan Ahli (Expert's Customization)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/smith/customizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvPenguatanAhli"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <div class="card bg-success">
+                                <div class="card-header">
+                                    <h5>Skill Alkimia (Alchemy)</h5>
+                                </div>
+                                <div class="card-title p-1">
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#bejana, #paduItem, #paduPerlengkapan" aria-expanded="false" aria-controls="bejana, paduItem, paduPerlengkapan">
+                                            Semua Alkimia [{{totalPoinSkillAlkimia}}]
+                                        </button>
+                                    </div>
+                                    
+                                    <hr class="my-2">
+
+                                    <!-- Bejana -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#bejana" aria-expanded="false" aria-controls="bejana">
+                                            Bejana (Bottle) [{{totalPoinSkillBejana}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="bejana">
+                                    <table class="table table-bordered table-striped">
+                                        <th colspan="2">Bejana Pemula (Novice's Bottle)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/novicebottle.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvBejanaPemula"></td>
+                                        </tr>
+                                        <th colspan="2">Bejana Perajin (Craftman's Bottle)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/craftsmanbottle.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvBejanaPerajin"></td>
+                                        </tr>
+                                        <th colspan="2">Bejana Pakar Padu (Synthesist's Bottle)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/synthesistbottle.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvBejanaPakarPadu"></td>
+                                        </tr>
+                                        <th colspan="2">Bejana Pro (Master's Bottle)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/thumb/bejana-pro-masters-bottle15.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvBejanaPro"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+
+                                    <hr class="my-2">
+    
+                                    <!-- Padu Item -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#paduItem" aria-expanded="false" aria-controls="paduItem">
+                                            Padu Item (Item Synthesis) [{{totalPoinSkillPaduItem}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="paduItem">
+                                    <table class="table table-bordered table-striped table-secondary">
+                                        <th colspan="2">Padu Item (Item Synthesis)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvPaduItem"></td>
+                                        </tr>
+                                        <th colspan="2">Sintesis Sedang (Mid-Class Synthesis)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvSintesisSedang"></td>
+                                        </tr>
+                                        <th colspan="2">Sintesis Klas Tinggi (High-Class Synthesis)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvSintesisKlasTinggi"></td>
+                                        </tr>
+                                        <th colspan="2">Sintesis Ahli (Expert's Synthesis)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvSintesisAhli"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+
+                                    <hr class="my-2">
+    
+                                    <!-- Padu Perlengkapan -->
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#paduPerlengkapan" aria-expanded="false" aria-controls="paduPerlengkapan">
+                                            Padu Perlengkapan (Synthesize Equipment) [{{totalPoinSkillPaduPerlengkapan}}]
+                                        </button>
+                                    </div>
+                                    <div class="collapse pt-2" id="paduPerlengkapan">
+                                    <table class="table table-bordered table-striped">
+                                        <th colspan="2">Padu Perlengkapan (Synthesize Equipment)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/synthesizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvPaduPerlengkapan"></td>
+                                        </tr>
+                                        <th colspan="2">Teknik Sintesis I (Tecnical Synthesis I)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/synthesizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvTeknikSintesisI"></td>
+                                        </tr>
+                                        <th colspan="2">Teknik Sintesis II (Tecnical Synthesis II)</th>
+                                        <tr>
+                                            <td><img src="https://toram-id.info/img/skill/alchemy/synthesizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
+                                            <td><input class="form-control" type="number" v-model="lvTeknikSintesisII"></td>
+                                        </tr>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- Bagian Kiri Level Kemahiran (Proficiency) -->
+                <div class="card mt-3 mb-3 bg-warning">
+                    <div class="card-header">
+                        <h3>Level Kemahiran (Proficiency)</h3>
+                    </div>
+                        <div class="card-title p-1">
+                            <div class="form-group pt-1">
+                                <label class="form-label"><strong>Kemahiran Tempa (Blacksmith Proficiency)</strong></label>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            <strong>Level</strong>
+                                            <input class="form-control col-6" type="number" v-model="lvKemahiranTempa">
+                                        </td>
+                                        <td>
+                                            <strong>Batas (Limit)</strong>
+                                            <input class="form-control col-6" disabled="disabled" v-model="batasLvKemahiranTempa">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#batasKemahiranTempa" aria-expanded="false" aria-controls="batasKemahiranTempa">
+                                        Batas Kemahiran Tempa [50 + {{totalPoinSkillAnvil}} * 5]
+                                    </button>
+                                </div>
+                                <div class="collapse pt-2" id="batasKemahiranTempa">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <th>Batas Kemahiran Padu</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Dasar {Base/Default}</th>
+                                            <td>{{dasarKemahiranTempa}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tempa Pemula (Novice's Anvil) Lv{{lvAnvilPemula}}</th>
+                                            <td>{{batasKemTempa1}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tempa Perajin (Craftman's Anvil) Lv{{lvAnvilPerajin}}</th>
+                                            <td>{{batasKemTempa2}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tempa Pakar Padu (Blacksmith's Anvil) Lv{{lvAnvilPandaiBesi}}</th>
+                                            <td>{{batasKemTempa3}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tempa Pro (Master's Anvil) Lv{{lvAnvilPro}}</th>
+                                            <td>{{batasKemTempa4}}</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Total</th>
+                                            <th>{{batasLvKemahiranTempa}}</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <div class="form-group pt-1">
+                                <label class="form-label"><strong>Kemahiran Padu (Synthesis Proficiency)</strong></label>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            <strong>Level</strong>
+                                            <input class="form-control col-6" type="number" v-model="lvKemahiranPadu">
+                                        </td>
+                                        <td>
+                                            <strong>Batas (Limit)</strong>
+                                            <input class="form-control col-6" disabled="disabled" v-model="batasLvKemahiranPadu">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#batasKemahiranPadu" aria-expanded="false" aria-controls="batasKemahiranPadu">
+                                        Batas Kemahiran Padu [50 + {{totalPoinSkillBejana}} * 5]
+                                    </button>
+                                </div>
+                                <div class="collapse pt-2" id="batasKemahiranPadu">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <th>Batas Kemahiran Padu</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Dasar {Base/Default}</th>
+                                            <td>{{dasarKemahiranPadu}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bejana Pemula (Novice's Bottle) Lv{{lvBejanaPemula}}</th>
+                                            <td>{{batasKemPadu1}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bejana Perajin (Craftman's Bottle) Lv{{lvBejanaPerajin}}</th>
+                                            <td>{{batasKemPadu2}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bejana Pakar Padu (Synthesist's Bottle) Lv{{lvBejanaPakarPadu}}</th>
+                                            <td>{{batasKemPadu3}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Bejana Pro (Master's Bottle) Lv{{lvBejanaPro}}</th>
+                                            <td>{{batasKemPadu4}}</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Total</th>
+                                            <th>{{batasLvKemahiranPadu}}</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="card mt-3 mb-3 bg-warning">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-warning" type="button" data-bs-toggle="collapse" 
+                        data-bs-target="#tableKemahiran" aria-expanded="false" 
+                        aria-controls="tableKemahiran">
+                            <strong>Tabel EXP Gain Kemahiran [Rumus Comming Soon]</strong>
+                        </button>
+                    </div>
+                    <div class="collapse pt-2" id="tableKemahiran">
+                        <!-- table status karakter -->
+                        <table class="table table-bordered text-center">
+                            <thead class="">
+                                <th>Level Kemahiran Pemain - Level Item = ...</th>
+                                <th colspan="2">EXP Gain</th>
+                            </thead>
+                            <tr>
+                                <th>≤0</th>
+                                <td>25%</td>
+                                <td>30%</td>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <td>22%</td>
+                                <td>27%</td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td>19%</td>
+                                <td>24%</td>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <td>16%</td>
+                                <td>21%</td>
+                            </tr>
+                            <tr>
+                                <th>4</th>
+                                <td>13%</td>
+                                <td>18%</td>
+                            </tr>
+                            <tr>
+                                <th>5</th>
+                                <td>10%</td>
+                                <td>15%</td>
+                            </tr>
+                            <tr>
+                                <th>6</th>
+                                <td>7%</td>
+                                <td>12%</td>
+                            </tr>
+                            <tr>
+                                <th>7</th>
+                                <td>4%</td>
+                                <td>9%</td>
+                            </tr>
+                            <tr>
+                                <th>8</th>
+                                <td>1%</td>
+                                <td>6%</td>
+                            </tr>
+                            <tr>
+                                <th>9</th>
+                                <td>0%</td>
+                                <td>3%</td>
+                            </tr>
+                            <tr>
+                                <th>10</th>
+                                <td>0%</td>
+                                <td>1%</td>
+                            </tr>
+                            <tr>
+                                <th>≥11</th>
+                                <td>0%</td>
+                                <td>0%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Bagian Kiri Perlengkapan Yang Dibuat -->
+                <div class="card mt-3 mb-3">
+                    <div class="card-header">
+                        <h3>Perlengkapan yang Dibuat</h3>
+                    </div>
+                    <div class="card-title pt-1">
+                        <!-- Catatan Perlengkapan Yang Dibuat -->
+                        <div class="card border-danger">
+                            <h5 class="card-header bg-danger text-white">
+                                📔 Catatan!
+                            </h5>
+                            <div class="card-body">
+                            <p>
+                                Contoh dibawah ini adalah perlengkapan <a v-bind:href="tautanPerlengkapan"><strong>{{namaPerlengkapan}}</strong></a>.
+                                Anda dapat melihat status perlengkapan yang dibuat pada <strong style="color: orangered;">"Tampilan Resep dan Detail"</strong>.
+                            </p>
+                            <ul>
+                                <li><strong style="color: orangered;">Tampilan Resep:</strong> 
+                                    <span style="color: lightseagreen;">Level</span> dan 
+                                    <span style="color: crimson;">Kesulitan (Difficulty)</span> Item,
+                                </li>
+                                <li><strong style="color: orangered;">Tampilan Detail:</strong> 
+                                    <span style="color: purple;">Potensi (Potential)</span>.
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                        <!-- Status Perlengkapan Yang Dibuat -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Status Perlengkapan Yang Dibuat</h4>
+                            </div>
+                            <div class="card-title p-2">
+                                <div class="row">
+                                    <!-- level perlengkapan -->
+                                    <div class="col-4">
+                                        <label><strong style="color: lightseagreen;">Level</strong></label>
+                                        <input class="form-control" v-model="lvPerlengkapan">
+                                    </div>
+                                    <!-- kesulitan (difficulty) perlengkapan -->
+                                    <div class="col-4">
+                                        <label><strong style="color: crimson;">Kesulitan</strong></label>
+                                        <input class="form-control" v-model="kesulitanPerlengkapan">
+                                    </div>
+                                    <!-- potensi perlengkapan -->
+                                    <div class="col-4">
+                                        <label><strong style="color: purple;">Potensi</strong></label>
+                                        <input class="form-control" v-model="potential">
+                                    </div>
+                                    <!-- maksimal kemahiran tempa -->
+                                    <div>
+                                        <label><strong>Maksimal Kemahiran Tempa yang Bisa Diperoleh</strong></label>
+                                        <input class="form-control" type="number" v-model="maxKemahiranTempa" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Kiri Ramuan Yang Dibuat  -->
+                <div class="card mt-3 mb-3">
+                    <div class="card-header">
+                        <h3>Ramuan yang Dibuat</h3>
+                    </div>
+                    <div class="card-title pt-1">
+                        <!-- Catatan Perlengkapan Yang Dibuat -->
+                        <div class="card border-danger">
+                            <h5 class="card-header bg-danger text-white">
+                                📔 Catatan!
+                            </h5>
+                            <div class="card-body">
+                            <p>
+                                Contoh dibawah ini adalah perlengkapan <a v-bind:href="tautanRamuan"><strong>{{namaRamuan}}</strong></a>.
+                                Anda dapat melihat status perlengkapan yang dibuat pada <strong style="color: orangered;">"Tampilan Resep dan Detail"</strong>.
+                            </p>
+                            <ul>
+                                <li><strong style="color: orangered;">Tampilan Resep:</strong> 
+                                    <span style="color: lightseagreen;">Level</span> dan 
+                                    <span style="color: crimson;">Kesulitan (Difficulty)</span> Item,
+                                </li>
+                                <li><strong style="color: orangered;">Tampilan Detail:</strong> 
+                                    <span style="color: purple;">Keterangan</span>.
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                        <!-- Status Perlengkapan Yang Dibuat -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Status Ramuan Yang Dibuat</h4>
+                            </div>
+                            <div class="card-title p-2">
+                                <div class="row">
+                                    <!-- level ramuan -->
+                                    <div class="col-6">
+                                        <label><strong style="color: lightseagreen;">Level</strong></label>
+                                        <input class="form-control" v-model="lvRamuan">
+                                    </div>
+                                    <!-- kesulitan (difficulty) ramuan -->
+                                    <div class="col-6">
+                                        <label><strong style="color: crimson;">Kesulitan</strong></label>
+                                        <input class="form-control" v-model="kesulitanRamuan">
+                                    </div>
+                                    <!-- maksimal kemahiran padu -->
+                                    <div>
+                                        <label><strong>Maksimal Kemahiran Padu yang Bisa Diperoleh</strong></label>
+                                        <input class="form-control" type="number" v-model="maxKemahiranPadu" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bagian Kanan -->
+            <div class="col-md-7 bg-dark">
+                <!-- Bagian Kanan Status Lainnya -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Status Lainnya</h3>
+                    </div>
+                    <div class="card-title pt-1">
+                        <!-- status masakan -->
+                        <!-- button status masakan  -->
+                        <!-- <div class="d-grid gap-2">
+                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusMasakan" aria-expanded="false" aria-controls="statusMasakan">
+                                Status Masakan (Food)
+                            </button>
+                        </div> -->
+                        <!-- collapse status masakan -->
+                        <!-- <div class="collapse pt-2" id="statusMasakan"> -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Status Masakan (Food)</h4>
+                                </div>
+                                <div class="card-title p-2">
+                                    <div class="row">
+                                        <!-- Masakan STR -->
+                                        <div class="col-4">
+                                            <label>STR</label>
+                                            <input class="form-control" v-model="foodSTR">
+                                        </div>
+                                        <!-- Masakan DEX -->
+                                        <div class="col-4">
+                                            <label>DEX</label>
+                                            <input class="form-control" v-model="foodDEX">
+                                        </div>
+                                        <!-- Masakan INT -->
+                                        <div class="col-4">
+                                            <label>INT</label>
+                                            <input class="form-control" v-model="foodINT">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                        
+                        <!-- pembatas -->
+                        <hr class="my-2">
+                        
+                        <!-- status perlengkapan -->
+                        <!-- button status perlengkapan  -->
+                        <!-- <div class="d-grid gap-2">
+                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusPerlengkapan" aria-expanded="false" aria-controls="statusPerlengkapan">
+                                Status Perlengkapan (Equipment)
+                            </button>
+                        </div> -->
+                        <!-- collapse status perlengkapan  -->
+                        <!-- <div class="collapse pt-2" id="statusPerlengkapan"> -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Status Perlengkapan (Equipment)</h4>
+                                </div>
+                                <div class="card-title p-2">
+                                    <!-- status senjata -->
+                                    <div>
+                                        <!-- button senjata -->
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusSenjata" aria-expanded="false" aria-controls="statusSenjata">
+                                                Status Senjata (Weapon)
+                                            </button>
+                                        </div>
+                                        <!-- collapse senjata -->
+                                        <div class="collapse pt-2" id="statusSenjata">
+                                            <div class="row">
+                                                <!-- senjata STR -->
+                                                <div class="col-6">
+                                                    <label>STR</label>
+                                                    <input class="form-control" v-model="weapSTRflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>STR (%)</label>
+                                                    <input class="form-control" v-model="weapSTRperc">
+                                                </div>
+
+                                                <!-- senjata DEX -->
+                                                <div class="col-6">
+                                                    <label>DEX</label>
+                                                    <input class="form-control" v-model="weapDEXflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>DEX (%)</label>
+                                                    <input class="form-control" v-model="weapDEXperc">
+                                                </div>
+
+                                                <!-- senjata INT -->
+                                                <div class="col-6">
+                                                    <label>INT</label>
+                                                    <input class="form-control" v-model="weapINTflat">
+                                                </div>                                
+                                                <div class="col-6">
+                                                    <label>INT (%)</label>
+                                                    <input class="form-control" v-model="weapINTperc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- status sub-senjata -->
+                                    <div>
+                                        <!-- button sub-senjata -->
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#statusSubSenjata" aria-expanded="false" 
+                                            aria-controls="statusSubSenjata">
+                                                Status Sub-Senjata (Sub-Weapon)
+                                            </button>
+                                        </div>
+                                        <!-- collapse sub-senjata -->
+                                        <div class="collapse pt-2" id="statusSubSenjata">
+                                            <div class="row">
+                                                <!-- option sub-senjata -->
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <select class="form-control" v-model="subWeap">
+                                                            <option value="0">Kosong</option>
+                                                            <option value="2">DEX+2 | Army Knife</option>
+                                                            <option value="2">DEX+2 | High-Quality Wood Arrow</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- button lanjutan sub-senjata -->
+                                                <div class="col-6">
+                                                    <div class="d-grid gap-2">
+                                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                                        data-bs-target="#colSubSenjata" aria-expanded="false" 
+                                                        aria-controls="colSubSenjata">
+                                                            Lanjutan (Advanced)
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- collapse lanjutan sub-senjata -->
+                                            <div class="collapse pt-2" id="colSubSenjata">
+                                                <div class="card card-body">
+                                                    <div class="row">
+                                                        <!-- sub-senjata STR -->
+                                                        <div class="col-6">
+                                                            <label>STR</label>
+                                                            <input class="form-control" v-model="subWeapSTRflat">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>STR (%)</label>
+                                                            <input class="form-control" v-model="subWeapSTRperc">
+                                                        </div>
+
+                                                        <!-- sub-senjata DEX -->
+                                                        <div class="col-6">
+                                                            <label>DEX</label>
+                                                            <input class="form-control" v-model="subWeapDEXflat">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>DEX (%)</label>
+                                                            <input class="form-control" v-model="subWeapDEXperc">
+                                                        </div>
+
+                                                        <!-- sub-senjata INT -->                            
+                                                        <div class="col-6">
+                                                            <label>INT</label>
+                                                            <input class="form-control" v-model="subWeapINTflat">
+                                                        </div>                                        
+                                                        <div class="col-6">
+                                                            <label>INT (%)</label>
+                                                            <input class="form-control" v-model="subWeapINTperc">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- status zirah -->
+                                    <div>
+                                        <!-- button zirah -->
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#statusZirah" aria-expanded="false" 
+                                            aria-controls="statusZirah">
+                                                Status Zirah (Armor)
+                                            </button>
+                                        </div>
+                                        <!-- collapse zirah -->
+                                        <div class="collapse pt-2" id="statusZirah">
+                                            <div class="row">
+                                                <!-- zirah STR -->
+                                                <div class="col-6">
+                                                    <label>STR</label>
+                                                    <input class="form-control" v-model="armSTRflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>STR (%)</label>
+                                                    <input class="form-control" v-model="armSTRperc">
+                                                </div>
+
+                                                <!-- zirah DEX -->
+                                                <div class="col-6">
+                                                    <label>DEX</label>
+                                                    <input class="form-control" v-model="armDEXflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>DEX (%)</label>
+                                                    <input class="form-control" v-model="armDEXperc">
+                                                </div>
+
+                                                <!-- zirah INT -->
+                                                <div class="col-6">
+                                                    <label>INT</label>
+                                                    <input class="form-control" v-model="armINTflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>INT (%)</label>
+                                                    <input class="form-control" v-model="armINTperc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- status perlengkapan tambahan -->
+                                    <div>
+                                        <!-- button tambahan -->
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#statusPerlengkapanTambahan" aria-expanded="false" 
+                                            aria-controls="statusPerlengkapanTambahan">
+                                                Status Perlengkapan Tambahan (Additional)
+                                            </button>
+                                        </div>
+                                        <!-- collapse tambahan -->
+                                        <div class="collapse pt-2" id="statusPerlengkapanTambahan">
+                                            <div class="row">
+                                                <!-- option tambahan -->
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <select class="form-control" v-model="additional">
+                                                            <option value="0">Kosong</option>
+                                                            <option value="5">DEX+5 | Sanggul Chignon [Monster]</option>
+                                                            <option value="6">DEX+6 | Sanggul Chignon [NPC]</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- button lanjutan tambahan -->
+                                                <div class="col-6">
+                                                    <div class="d-grid gap-2">
+                                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                                        data-bs-target="#colTambahan" aria-expanded="false" 
+                                                        aria-controls="colTambahan">
+                                                            Lanjutan (Advanced)
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- collapse lanjutan tambahan -->
+                                            <div class="collapse pt-2" id="colTambahan">
+                                                <div class="card card-body">
+                                                    <div class="row">
+                                                        <!-- tambahan STR -->
+                                                        <div class="col-6">
+                                                            <label>STR</label>
+                                                            <input class="form-control" v-model="additionalSTRflat">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>STR (%)</label>
+                                                            <input class="form-control" v-model="additionalSTRperc">
+                                                        </div>
+
+                                                        <!-- tambahan DEX -->
+                                                        <div class="col-6">
+                                                            <label>DEX</label>
+                                                            <input class="form-control" v-model="additionalDEXflat">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>DEX (%)</label>
+                                                            <input class="form-control" v-model="additionalDEXperc">
+                                                        </div>
+
+                                                        <!-- tambahan INT -->                            
+                                                        <div class="col-6">
+                                                            <label>INT</label>
+                                                            <input class="form-control" v-model="additionalINTflat">
+                                                        </div>                                        
+                                                        <div class="col-6">
+                                                            <label>INT (%)</label>
+                                                            <input class="form-control" v-model="additionalINTperc">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- status perlengkapan spesial -->
+                                    <div>
+                                        <!-- button spesial -->
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#statusPerlengkapanSpesial" aria-expanded="false" 
+                                            aria-controls="statusPerlengkapanSpesial">
+                                                Status Perlengkapan Spesial (Special)
+                                            </button>
+                                        </div>
+                                        <!-- collapse spesial -->
+                                        <div class="collapse pt-2" id="statusPerlengkapanSpesial">
+                                            <div class="row">
+                                                <!-- option spesial -->
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                    <select class="form-control" v-model="special">
+                                                        <option value="0">Kosong</option>
+                                                        <option value="8">DEX+8 | Azimat Mahir IV [NPC]</option>
+                                                    </select>
+                                                    </div>
+                                                </div>
+                                                <!-- button lanjutan spesial -->
+                                                <div class="col-6">
+                                                    <div class="d-grid gap-2">
+                                                        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                                        data-bs-target="#colSpesial" aria-expanded="false" 
+                                                        aria-controls="colSpesial">
+                                                            Lanjutan (Advanced)
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- collapse lanjutan spesial -->
+                                            <div class="collapse pt-2" id="colSpesial">
+                                                <div class="card card-body">
+                                                    <div class="row">
+                                                        <!-- spesial STR -->
+                                                        <div class="col-6">
+                                                            <label>STR</label>
+                                                            <input class="form-control" v-model="specialSTRflat">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>STR (%)</label>
+                                                            <input class="form-control" v-model="specialSTRperc">
+                                                        </div>
+
+                                                        <!-- spesial DEX -->
+                                                        <div class="col-6">
+                                                            <label>DEX</label>
+                                                            <input class="form-control" v-model="specialDEXflat">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>DEX (%)</label>
+                                                            <input class="form-control" v-model="specialDEXperc">
+                                                        </div>
+
+                                                        <!-- spesial INT -->                            
+                                                        <div class="col-6">
+                                                            <label>INT</label>
+                                                            <input class="form-control" v-model="specialINTflat">
+                                                        </div>                                        
+                                                        <div class="col-6">
+                                                            <label>INT (%)</label>
+                                                            <input class="form-control" v-model="specialINTperc">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- status xtall -->
+                                    <div>
+                                        <!-- button xtall -->
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#statusXtall" aria-expanded="false" 
+                                            aria-controls="statusXtall">
+                                                Status Crysta [Xtall]
+                                            </button>
+                                        </div>
+                                        <!-- collapse xtall -->
+                                        <div class="collapse pt-2" id="statusXtall">
+                                            <!-- catatan xtall -->
+                                            <div class="card border-danger">
+                                                <h5 class="card-header bg-danger text-white">
+                                                    📔 Catatan!
+                                                </h5>
+                                                <div class="card-body">
+                                                <p class="card-text"> 
+                                                    Anda harus menjumlahkan sendiri <strong style="color: royalblue;">Status Crystal [Xtall]</strong> Anda. 
+                                                    Biasanya <b>Kaesa</b> menggunakan xtall <b style="color: royalblue;"><i>DEX+5, 6, ..., dst</i></b>. Jika ada xtall <b>DEX+x</b> baru 
+                                                    <b>Kaesa</b> langsung membelinya <b>4 unit</b> sekaligus untuk <b style="color: orangered;">Senjata, Zirah, Tambahan/Topi, dan Spesial/Cicin (Weapon, Armor, Additional, and Special) </b>. 
+                                                </p>
+                                                </div>
+                                            </div>
+                                            <!-- bagian input xtall -->
+                                            <div class="row pt-2">
+                                                <!-- xtall STR -->
+                                                <div class="col-6">
+                                                    <label>STR</label>
+                                                    <input class="form-control" v-model="xtallSTRflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>STR (%)</label>
+                                                    <input class="form-control" v-model="xtallSTRperc">
+                                                </div>
+
+                                                <!-- xtall DEX -->
+                                                <div class="col-6">
+                                                    <label>DEX</label>
+                                                    <input class="form-control" v-model="xtallDEXflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>DEX (%)</label>
+                                                    <input class="form-control" v-model="xtallDEXperc">
+                                                </div>
+
+                                                <!-- xtall INT -->
+                                                <div class="col-6">
+                                                    <label>INT</label>
+                                                    <input class="form-control" v-model="xtallINTflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>INT (%)</label>
+                                                    <input class="form-control" v-model="xtallINTperc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+
+                        <!-- pembatas -->
+                        <hr class="my-2">
+
+                        <!-- status avatar -->
+                        <!-- button status avatar  -->
+                        <!-- <div class="d-grid gap-2">
+                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusAvatar" aria-expanded="false" aria-controls="statusAvatar">
+                                Status Kostum (Avatar)
+                            </button>
+                        </div> -->
+                        <!-- collapse status avatar  -->
+                        <!-- <div class="collapse pt-2" id="statusAvatar"> -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Status Kostum (Avatar)</h4>
+                                </div>
+                                <div class="card-title p-2">
+                                    <!-- Avatar Aksesoris -->
+                                    <div>
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusAvaAks" aria-expanded="false" aria-controls="statusAvaAks">
+                                                Avatar Aksesoris
+                                            </button>
+                                        </div>
+                                        <div class="collapse pt-2" id="statusAvaAks">
+                                            <div class="row">
+                                                <!-- aksesoris STR -->
+                                                <div class="col-6">
+                                                    <label>STR</label>
+                                                    <input class="form-control" v-model="avaAksSTRflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>STR (%)</label>
+                                                    <input class="form-control" v-model="avaAksSTRperc">
+                                                </div>
+
+                                                <!-- aksesoris DEX -->                            
+                                                <div class="col-6">
+                                                    <label>DEX</label>
+                                                    <input class="form-control" v-model="avaAksDEXflat">
+                                                </div>                            
+                                                <div class="col-6">
+                                                    <label>DEX (%)</label>
+                                                    <input class="form-control" v-model="avaAksDEXperc">
+                                                </div>
+
+                                                <!-- aksesoris INT -->
+                                                <div class="col-6">
+                                                    <label>INT</label>
+                                                    <input class="form-control" v-model="avaAksINTflat">
+                                                </div>                            
+                                                <div class="col-6">
+                                                    <label>INT (%)</label>
+                                                    <input class="form-control" v-model="avaAksINTperc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- Avatar (Atas) -->
+                                    <div>
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusAvaAtas" aria-expanded="false" aria-controls="statusAvaAtas">
+                                                Avatar (Atas)
+                                            </button>
+                                        </div>
+                                        <div class="collapse pt-2" id="statusAvaAtas">
+                                            <div class="row">
+                                                <!-- atas STR -->
+                                                <div class="col-6">
+                                                    <label>STR</label>
+                                                    <input class="form-control" v-model="avaAtasSTRflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>STR (%)</label>
+                                                    <input class="form-control" v-model="avaAtasSTRperc">
+                                                </div>
+
+                                                <!-- atas DEX -->                            
+                                                <div class="col-6">
+                                                    <label>DEX</label>
+                                                    <input class="form-control" v-model="avaAtasDEXflat">
+                                                </div>                            
+                                                <div class="col-6">
+                                                    <label>DEX (%)</label>
+                                                    <input class="form-control" v-model="avaAtasDEXperc">
+                                                </div>
+
+                                                <!-- atas INT -->
+                                                <div class="col-6">
+                                                    <label>INT</label>
+                                                    <input class="form-control" v-model="avaAtasINTflat">
+                                                </div>                            
+                                                <div class="col-6">
+                                                    <label>INT (%)</label>
+                                                    <input class="form-control" v-model="avaAtasINTperc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- pembatas -->
+                                    <hr class="my-2">
+
+                                    <!-- Avatar (Bawah) -->
+                                    <div>
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#statusAvaBawah" aria-expanded="false" aria-controls="statusAvaBawah">
+                                                Avatar (Bawah)
+                                            </button>
+                                        </div>
+                                        <div class="collapse pt-2" id="statusAvaBawah">
+                                            <div class="row">
+                                                <!-- bawah STR -->
+                                                <div class="col-6">
+                                                    <label>STR</label>
+                                                    <input class="form-control" v-model="avaBawahSTRflat">
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>STR (%)</label>
+                                                    <input class="form-control" v-model="avaBawahSTRperc">
+                                                </div>
+
+                                                <!-- bawah DEX -->                            
+                                                <div class="col-6">
+                                                    <label>DEX</label>
+                                                    <input class="form-control" v-model="avaBawahDEXflat">
+                                                </div>                            
+                                                <div class="col-6">
+                                                    <label>DEX (%)</label>
+                                                    <input class="form-control" v-model="avaBawahDEXperc">
+                                                </div>
+
+                                                <!-- bawah INT -->
+                                                <div class="col-6">
+                                                    <label>INT</label>
+                                                    <input class="form-control" v-model="avaBawahINTflat">
+                                                </div>                            
+                                                <div class="col-6">
+                                                    <label>INT (%)</label>
+                                                    <input class="form-control" v-model="avaBawahINTperc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+                <!-- Bagian Kanan Proses Kalkulasi Kalkulator -->
+                <div class="card mt-3">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-info" type="button" data-bs-toggle="collapse" 
+                        data-bs-target="#ketStatusLengkap" aria-expanded="false" 
+                        aria-controls="ketStatusLengkap">
+                            Keterangan Status Lengkap
+                        </button>
+                    </div>
+                    <div class="collapse pt-2" id="ketStatusLengkap">
+                        <!-- table status karakter -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th colspan="7">Status Karakter</th>
+                            </thead>
+                            <tr class="table-secondary">
+                                <th>STR</th>
+                                <th>INT</th>
+                                <th>VIT</th>
+                                <th>AGI</th>
+                                <th>DEX</th>
+                                <th>TEC</th>
+                                <th>LUK</th>
+                            </tr>
+                            <tr>
+                                <td>{{str}}</td>
+                                <td>{{int}}</td>
+                                <td>{{vit}}</td>
+                                <td>{{agi}}</td>
+                                <td>{{dex}}</td>
+                                <td>{{tec}}</td>
+                                <td>{{luk}}</td>
+                            </tr>
+                        </table>
+                        <!-- table status masakan -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th colspan="3">Status Masakan (Food)</th>
+                            </thead>
+                            <tr class="table-secondary">
+                                <th>STR</th>
+                                <th>DEX</th>
+                                <th>INT</th>
+                            </tr>
+                            <tr>
+                                <td>{{foodSTR}}</td>
+                                <td>{{foodDEX}}</td>
+                                <td>{{foodINT}}</td>
+                            </tr>
+                        </table>
+                        <!-- table status perlengkapan & xtall -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th colspan="3">Status Perlengkapan (Equipment)</th>
+                            </thead>
+                            <tr class="table-secondary">
+                                <th>STR</th>
+                                <th>DEX</th>
+                                <th>INT</th>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Flat Perlengkapan</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalPerlengkapanSTRflat1}}</td>
+                                <td>{{totalPerlengkapanDEXflat1}}</td>
+                                <td>{{totalPerlengkapanINTflat1}}</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Flat [Xtall]</th>
+                            </tr>
+                            <tr>
+                                <td>{{xtallSTRflat}}</td>
+                                <td>{{xtallDEXflat}}</td>
+                                <td>{{xtallINTflat}}</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Total Flat</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalPerlengkapanSTRflat2}}</td>
+                                <td>{{totalPerlengkapanDEXflat2}}</td>
+                                <td>{{totalPerlengkapanINTflat2}}</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Perc (%) Perlengkapan</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalPerlengkapanSTRperc1}}%</td>
+                                <td>{{totalPerlengkapanDEXperc1}}%</td>
+                                <td>{{totalPerlengkapanINTperc1}}%</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Perc (%) [Xtall]</th>
+                            </tr>
+                            <tr>
+                                <td>{{xtallSTRperc}}%</td>
+                                <td>{{xtallDEXperc}}%</td>
+                                <td>{{xtallINTperc}}%</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Total Perc (%)</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalPerlengkapanSTRperc2}}%</td>
+                                <td>{{totalPerlengkapanDEXperc2}}%</td>
+                                <td>{{totalPerlengkapanINTperc2}}%</td>
+                            </tr>
+                        </table>
+                        <!-- table status avatar -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th colspan="3">Status Kostum (Avatar)</th>
+                            </thead>
+                            <tr class="table-secondary">
+                                <th>STR</th>
+                                <th>DEX</th>
+                                <th>INT</th>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Flat Ava</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalAvaSTRflat}}</td>
+                                <td>{{totalAvaDEXflat}}</td>
+                                <td>{{totalAvaINTflat}}</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Perc (%) Ava</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalAvaSTRperc}}%</td>
+                                <td>{{totalAvaDEXperc}}%</td>
+                                <td>{{totalAvaINTperc}}%</td>
+                            </tr>
+                        </table>
+                        <!-- table status avatar -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th colspan="3">Hasil Status Lainnya</th>
+                            </thead>
+                            <tr class="table-secondary">
+                                <th>STR</th>
+                                <th>DEX</th>
+                                <th>INT</th>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Flat S.L.</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalSTRflat}}</td>
+                                <td>{{totalDEXflat}}</td>
+                                <td>{{totalINTflat}}</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Perc (%) S.L.</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalSTRperc}}%</td>
+                                <td>{{totalDEXperc}}%</td>
+                                <td>{{totalINTperc}}%</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Perc (%) ke Flat S.L.</th>
+                            </tr>
+                            <tr>
+                                <td>{{str}} * {{totalSTRperc}}% = {{totalSTRptf}}</td>
+                                <td>{{dex}} * {{totalDEXperc}}% = {{totalDEXptf}}</td>
+                                <td>{{int}} * {{totalINTperc}}% = {{totalINTptf}}</td>
+                            </tr>
+                            <tr class="table-secondary">
+                                <th colspan="3">Status Keseluruhan S.L.</th>
+                            </tr>
+                            <tr>
+                                <td>{{totalSTRkes}}</td>
+                                <td>{{totalDEXkes}}</td>
+                                <td>{{totalINTkes}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                 <!-- Proses Pandai Besi -->
+                 <div class="card mt-3">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#kalPandaiBesi" aria-expanded="false" aria-controls="kalPandaiBesi">
+                            Kalkulator Pandai Besi (Smith)
+                        </button>
+                    </div>
+                    <div class="collapse pt-2" id="kalPandaiBesi">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Potensial Perlengkapan (Pot Equipment)</h3>
+                            </div>
+                            <table class="card-table table table-striped text-nowrap">
+                            <tr>
+                                <th> Pedang </th>
+                                <td> <input class="form-control col-4" type="number" id="pedang" v-model="pedang" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th> Pedang 2 tangan </th>
+                                <td> <input class="form-control col-4" type="number" id="pedangraya" v-model="pedangraya" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th> Busur </th>
+                                <td> <input class="form-control col-4" type="number" id="bow" v-model="bow" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th> Bowgun </th>
+                                <td> <input class="form-control col-4" type="number" id="bowgun" v-model="bowgun" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th> Tongkat </th>
+                                <td> <input class="form-control col-4" type="number" id="tongkat" v-model="tongkat" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th> Alat Sihir </th>
+                                <td> <input class="form-control col-4" type="number" id="md"  v-model="md" disabled> </td>
+                            </tr>
+                
+                            <tr>
+                                <th> Tinju </th>
+                                <td> <input class="form-control col-4" type="number" id="tinju" v-model="tinju" disabled> </td>
+                            </tr>
+                
+                            <tr>
+                                <th> Tombak </th>
+                                <td> <input class="form-control col-4" type="number" id="tombak" v-model="tombak" disabled> </td>
+                            </tr>
+                
+                            <tr>
+                                <th> katana </th>
+                                <td> <input class="form-control col-4" type="number" id="katana"  v-model="katana" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th> Zirah </th>
+                                <td> <input class="form-control col-4" type="number" id="zirah" v-model="zirah" disabled> </td>
+                            </tr>
+                            </table>
+                
+                            <hr class="my-1">
+                
+                            <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group p-3">
+                            <label class="form-label">Total Status DEX (flat)</label>
+                            <input class="form-control"  disabled=disabled>
+                            </div></div>
+                            <div class="col-md-6">
+                            <div class="form-group p-3">
+                            <label class="form-label">Total Status DEX (%)</label>
+                            <input class="form-control"  disabled=disabled>
+                            </div></div>
+                            </div>
+                
+                
+                            <hr class="my-3">
+                            <div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group p-3">
+                            <label class="form-label">Total Status STR (flat)</label>
+                            <input class="form-control"  disabled=disabled>
+                            </div></div>
+                            <div class="col-md-6">
+                            <div class="form-group p-3">
+                            <label class="form-label">Total Status STR (%)</label>
+                            <input class="form-control"  disabled=disabled>
+                            </div></div>
+                
+                            <div class="col-6">
+                                <div class="form-group p-3">
+                                <strong>Kesulitan Pemain</strong>
+                                <input disabled="disabled" class="form-control">
+                                </div>
+                            </div>
+                            </div>
+                
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proses Alkimia -->
+                <div class="card mt-3 mb-3">
+                    <!-- Button Kalkulator Alkimia -->
+                    <div class="row">
+                        <div class="d-grid gap-2 col-9">
+                            <button class="btn btn-success" type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#kalAlkimia" aria-expanded="false" 
+                            aria-controls="kalAlkimia">
+                                Kalkulator Alkimia (Alchemy)
+                            </button>
+                        </div>
+                        <div class="d-grid gap-2 col-2">
+                            <button class="btn btn-success " type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#kalAlkimia, #penguranganPoinBahan, #keterampilanPadu, #suksesRatePaduRamuan" aria-expanded="false" 
+                            aria-controls="kalAlkimia, penguranganPoinBahan, keterampilanPadu, suksesRatePaduRamuan">
+                                Semua
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Collapse Kalkulator Alkimia -->
+                    <div class="collapse pt-2" id="kalAlkimia">
+                        <div class="card">
+                            <!-- Header Kalkulator Alkimia -->
+                            <div class="card-header">
+                                <h3>Kalkulator Alkimia (Alchemy)</h3>
+                            </div>
+                            <!-- Title/Body Kalkulator Alkimia -->
+                            <div class="card-title">
+                                <!-- Button Pengurangan Poin Bahan -->
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#penguranganPoinBahan" aria-expanded="false" 
+                                    aria-controls="penguranganPoinBahan">
+                                        Pengurangan Poin Bahan [{{totalPenguranganPoinBahan}}%]
+                                    </button>
+                                </div>
+                                <!-- Collapse Pengurangan Poin Bahan-->
+                                <div class="collapse pt-2" id="penguranganPoinBahan">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <th>Pengurangan Poin Bahan</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Sintesis Sedang (Mid-Class Synthesis) Lv{{lvSintesisSedang}}*1</th>
+                                            <td>{{penguPoinBahan1}}%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Sintesis Klas Tinggi (High-Class Synthesis) Lv{{lvSintesisKlasTinggi}}*1</th>
+                                            <td>{{penguPoinBahan1}}%</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Sintesis Ahli (Expert's Synthesis) Lv{{lvSintesisAhli}}*1</th>
+                                            <td>{{penguPoinBahan1}}%</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Total</th>
+                                            <th>{{totalPenguranganPoinBahan}}%</th>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- pembatas -->
+                                <hr class="my-2">
+
+                                <!-- Button Keterampilan Padu -->
+                                <div>
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark text-center">
+                                            <th>Keterangan Ramuan</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Level Ramuan</th>
+                                            <td>{{lvRamuan}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Kesulitan Ramuan</th>
+                                            <td>{{kesulitanRamuan}}</td>
+                                        </tr>
+                                    </table>
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark text-center">
+                                            <th>Ketarangan Status</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Status Karakter TEC</th>
+                                            <td>{{tec}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status Karakter INT</th>
+                                            <td>{{int}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status INT Flat</th>
+                                            <td>{{tec}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status INT Persen</th>
+                                            <td>{{tec}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total INT</th>
+                                            <td>{{tec}}</td>
+                                        </tr>
+                                    </table>
+                                   
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#suksesRatePaduRamuan" aria-expanded="false" 
+                                    aria-controls="suksesRatePaduRamuan">
+                                        Sukses Rate Padu Ramuan [{{totalKeterampilanPadu}}]
+                                    </button>
+                                </div>
+                                <!-- Collapse Keterampilan Padu -->
+                                <div class="collapse pt-2" id="suksesRatePaduRamuan">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <th>Keterampilan Padu</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Dasar {Base/Default}</th>
+                                            <td>{{dasarKeterampilanPadu}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Padu Perlengkapan (Synthesize Equipment) Lv{{lvPaduPerlengkapan}}*10</th>
+                                            <td>{{ketPadu1}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teknik Sintesis I (Tecnical Synthesis I) Lv{{lvTeknikSintesisI}}*15</th>
+                                            <td>{{ketPadu2}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teknik Sintesis II (Tecnical Synthesis II) Lv{{lvTeknikSintesisII}}*20</th>
+                                            <td>{{ketPadu3}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status Karakter TEC +{{tec}}*2</th>
+                                            <td>{{ketPadu4}}</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Total</th>
+                                            <th>{{totalKeterampilanPadu}}</th>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- pembatas -->
+                                <hr class="my-2">
+                                
+                                <!-- Button Keterampilan Padu -->
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#keterampilanPadu" aria-expanded="false" 
+                                    aria-controls="keterampilanPadu">
+                                        Keterampilan Padu [{{totalKeterampilanPadu}}]
+                                    </button>
+                                </div>
+                                <!-- Collapse Keterampilan Padu -->
+                                <div class="collapse pt-2" id="keterampilanPadu">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                            <th>Keterampilan Padu</th>
+                                            <th>Nilai</th>
+                                        </thead>
+                                        <tr>
+                                            <th>Dasar {Base/Default}</th>
+                                            <td>{{dasarKeterampilanPadu}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Padu Perlengkapan (Synthesize Equipment) Lv{{lvPaduPerlengkapan}}*10</th>
+                                            <td>{{ketPadu1}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teknik Sintesis I (Tecnical Synthesis I) Lv{{lvTeknikSintesisI}}*15</th>
+                                            <td>{{ketPadu2}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Teknik Sintesis II (Tecnical Synthesis II) Lv{{lvTeknikSintesisII}}*20</th>
+                                            <td>{{ketPadu3}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status Karakter TEC +{{tec}}*2</th>
+                                            <td>{{ketPadu4}}</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Total</th>
+                                            <th>{{totalKeterampilanPadu}}</th>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <!-- pembatas -->
+                                <hr class="my-2">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    <footer class="text-center p-3" style="background-color: lightsteelblue;">
+        <h4>Copyright @2021 | Toram Online | Kaesa Lyrih</h4>
+    </footer>
+
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="apb.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
