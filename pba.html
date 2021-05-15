@@ -548,22 +548,22 @@
                                     <!-- level perlengkapan -->
                                     <div class="col-4">
                                         <label><strong style="color: lightseagreen;">Level</strong></label>
-                                        <input class="form-control" v-model="lvPerlengkapan">
+                                        <input class="form-control" type="number" v-model="lvPerlengkapan">
                                     </div>
                                     <!-- kesulitan (difficulty) perlengkapan -->
                                     <div class="col-4">
                                         <label><strong style="color: crimson;">Kesulitan</strong></label>
-                                        <input class="form-control" v-model="kesulitanPerlengkapan">
+                                        <input class="form-control" type="number" v-model="kesulitanPerlengkapan">
                                     </div>
                                     <!-- potensi perlengkapan -->
                                     <div class="col-4">
                                         <label><strong style="color: purple;">Potensi</strong></label>
-                                        <input class="form-control" v-model="potential">
+                                        <input class="form-control" type="number" v-model="potential">
                                     </div>
                                     <!-- maksimal kemahiran tempa -->
                                     <div>
                                         <label><strong>Maksimal Kemahiran Tempa yang Bisa Diperoleh</strong></label>
-                                        <input class="form-control" type="number" v-model="maxKemahiranTempa" disabled>
+                                        <input class="form-control" type="number" type="number" v-model="maxKemahiranTempa" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -608,17 +608,17 @@
                                     <!-- level ramuan -->
                                     <div class="col-6">
                                         <label><strong style="color: lightseagreen;">Level</strong></label>
-                                        <input class="form-control" v-model="lvRamuan">
+                                        <input class="form-control" type="number" v-model="lvRamuan">
                                     </div>
                                     <!-- kesulitan (difficulty) ramuan -->
                                     <div class="col-6">
                                         <label><strong style="color: crimson;">Kesulitan</strong></label>
-                                        <input class="form-control" v-model="kesulitanRamuan">
+                                        <input class="form-control" type="number" v-model="kesulitanRamuan">
                                     </div>
                                     <!-- maksimal kemahiran padu -->
                                     <div>
                                         <label><strong>Maksimal Kemahiran Padu yang Bisa Diperoleh</strong></label>
-                                        <input class="form-control" type="number" v-model="maxKemahiranPadu" disabled>
+                                        <input class="form-control" type="number" type="number" v-model="maxKemahiranPadu" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -653,17 +653,17 @@
                                         <!-- Masakan STR -->
                                         <div class="col-4">
                                             <label>STR</label>
-                                            <input class="form-control" v-model="foodSTR">
+                                            <input class="form-control" type="number" v-model="foodSTR">
                                         </div>
                                         <!-- Masakan DEX -->
                                         <div class="col-4">
                                             <label>DEX</label>
-                                            <input class="form-control" v-model="foodDEX">
+                                            <input class="form-control" type="number" v-model="foodDEX">
                                         </div>
                                         <!-- Masakan INT -->
                                         <div class="col-4">
                                             <label>INT</label>
-                                            <input class="form-control" v-model="foodINT">
+                                            <input class="form-control" type="number" v-model="foodINT">
                                         </div>
                                     </div>
                                 </div>
@@ -701,31 +701,31 @@
                                                 <!-- senjata STR -->
                                                 <div class="col-6">
                                                     <label>STR</label>
-                                                    <input class="form-control" v-model="weapSTRflat">
+                                                    <input class="form-control" type="number" v-model="weapSTRflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>STR (%)</label>
-                                                    <input class="form-control" v-model="weapSTRperc">
+                                                    <input class="form-control" type="number" v-model="weapSTRperc">
                                                 </div>
 
                                                 <!-- senjata DEX -->
                                                 <div class="col-6">
                                                     <label>DEX</label>
-                                                    <input class="form-control" v-model="weapDEXflat">
+                                                    <input class="form-control" type="number" v-model="weapDEXflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>DEX (%)</label>
-                                                    <input class="form-control" v-model="weapDEXperc">
+                                                    <input class="form-control" type="number" v-model="weapDEXperc">
                                                 </div>
 
                                                 <!-- senjata INT -->
                                                 <div class="col-6">
                                                     <label>INT</label>
-                                                    <input class="form-control" v-model="weapINTflat">
+                                                    <input class="form-control" type="number" v-model="weapINTflat">
                                                 </div>                                
                                                 <div class="col-6">
                                                     <label>INT (%)</label>
-                                                    <input class="form-control" v-model="weapINTperc">
+                                                    <input class="form-control" type="number" v-model="weapINTperc">
                                                 </div>
                                             </div>
                                         </div>
@@ -775,31 +775,31 @@
                                                         <!-- sub-senjata STR -->
                                                         <div class="col-6">
                                                             <label>STR</label>
-                                                            <input class="form-control" v-model="subWeapSTRflat">
+                                                            <input class="form-control" type="number" v-model="subWeapSTRflat">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>STR (%)</label>
-                                                            <input class="form-control" v-model="subWeapSTRperc">
+                                                            <input class="form-control" type="number" v-model="subWeapSTRperc">
                                                         </div>
 
                                                         <!-- sub-senjata DEX -->
                                                         <div class="col-6">
                                                             <label>DEX</label>
-                                                            <input class="form-control" v-model="subWeapDEXflat">
+                                                            <input class="form-control" type="number" v-model="subWeapDEXflat">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>DEX (%)</label>
-                                                            <input class="form-control" v-model="subWeapDEXperc">
+                                                            <input class="form-control" type="number" v-model="subWeapDEXperc">
                                                         </div>
 
                                                         <!-- sub-senjata INT -->                            
                                                         <div class="col-6">
                                                             <label>INT</label>
-                                                            <input class="form-control" v-model="subWeapINTflat">
+                                                            <input class="form-control" type="number" v-model="subWeapINTflat">
                                                         </div>                                        
                                                         <div class="col-6">
                                                             <label>INT (%)</label>
-                                                            <input class="form-control" v-model="subWeapINTperc">
+                                                            <input class="form-control" type="number" v-model="subWeapINTperc">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -826,31 +826,31 @@
                                                 <!-- zirah STR -->
                                                 <div class="col-6">
                                                     <label>STR</label>
-                                                    <input class="form-control" v-model="armSTRflat">
+                                                    <input class="form-control" type="number" v-model="armSTRflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>STR (%)</label>
-                                                    <input class="form-control" v-model="armSTRperc">
+                                                    <input class="form-control" type="number" v-model="armSTRperc">
                                                 </div>
 
                                                 <!-- zirah DEX -->
                                                 <div class="col-6">
                                                     <label>DEX</label>
-                                                    <input class="form-control" v-model="armDEXflat">
+                                                    <input class="form-control" type="number" v-model="armDEXflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>DEX (%)</label>
-                                                    <input class="form-control" v-model="armDEXperc">
+                                                    <input class="form-control" type="number" v-model="armDEXperc">
                                                 </div>
 
                                                 <!-- zirah INT -->
                                                 <div class="col-6">
                                                     <label>INT</label>
-                                                    <input class="form-control" v-model="armINTflat">
+                                                    <input class="form-control" type="number" v-model="armINTflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>INT (%)</label>
-                                                    <input class="form-control" v-model="armINTperc">
+                                                    <input class="form-control" type="number" v-model="armINTperc">
                                                 </div>
                                             </div>
                                         </div>
@@ -900,31 +900,31 @@
                                                         <!-- tambahan STR -->
                                                         <div class="col-6">
                                                             <label>STR</label>
-                                                            <input class="form-control" v-model="additionalSTRflat">
+                                                            <input class="form-control" type="number" v-model="additionalSTRflat">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>STR (%)</label>
-                                                            <input class="form-control" v-model="additionalSTRperc">
+                                                            <input class="form-control" type="number" v-model="additionalSTRperc">
                                                         </div>
 
                                                         <!-- tambahan DEX -->
                                                         <div class="col-6">
                                                             <label>DEX</label>
-                                                            <input class="form-control" v-model="additionalDEXflat">
+                                                            <input class="form-control" type="number" v-model="additionalDEXflat">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>DEX (%)</label>
-                                                            <input class="form-control" v-model="additionalDEXperc">
+                                                            <input class="form-control" type="number" v-model="additionalDEXperc">
                                                         </div>
 
                                                         <!-- tambahan INT -->                            
                                                         <div class="col-6">
                                                             <label>INT</label>
-                                                            <input class="form-control" v-model="additionalINTflat">
+                                                            <input class="form-control" type="number" v-model="additionalINTflat">
                                                         </div>                                        
                                                         <div class="col-6">
                                                             <label>INT (%)</label>
-                                                            <input class="form-control" v-model="additionalINTperc">
+                                                            <input class="form-control" type="number" v-model="additionalINTperc">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -975,31 +975,31 @@
                                                         <!-- spesial STR -->
                                                         <div class="col-6">
                                                             <label>STR</label>
-                                                            <input class="form-control" v-model="specialSTRflat">
+                                                            <input class="form-control" type="number" v-model="specialSTRflat">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>STR (%)</label>
-                                                            <input class="form-control" v-model="specialSTRperc">
+                                                            <input class="form-control" type="number" v-model="specialSTRperc">
                                                         </div>
 
                                                         <!-- spesial DEX -->
                                                         <div class="col-6">
                                                             <label>DEX</label>
-                                                            <input class="form-control" v-model="specialDEXflat">
+                                                            <input class="form-control" type="number" v-model="specialDEXflat">
                                                         </div>
                                                         <div class="col-6">
                                                             <label>DEX (%)</label>
-                                                            <input class="form-control" v-model="specialDEXperc">
+                                                            <input class="form-control" type="number" v-model="specialDEXperc">
                                                         </div>
 
                                                         <!-- spesial INT -->                            
                                                         <div class="col-6">
                                                             <label>INT</label>
-                                                            <input class="form-control" v-model="specialINTflat">
+                                                            <input class="form-control" type="number" v-model="specialINTflat">
                                                         </div>                                        
                                                         <div class="col-6">
                                                             <label>INT (%)</label>
-                                                            <input class="form-control" v-model="specialINTperc">
+                                                            <input class="form-control" type="number" v-model="specialINTperc">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1040,31 +1040,31 @@
                                                 <!-- xtall STR -->
                                                 <div class="col-6">
                                                     <label>STR</label>
-                                                    <input class="form-control" v-model="xtallSTRflat">
+                                                    <input class="form-control" type="number" v-model="xtallSTRflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>STR (%)</label>
-                                                    <input class="form-control" v-model="xtallSTRperc">
+                                                    <input class="form-control" type="number" v-model="xtallSTRperc">
                                                 </div>
 
                                                 <!-- xtall DEX -->
                                                 <div class="col-6">
                                                     <label>DEX</label>
-                                                    <input class="form-control" v-model="xtallDEXflat">
+                                                    <input class="form-control" type="number" v-model="xtallDEXflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>DEX (%)</label>
-                                                    <input class="form-control" v-model="xtallDEXperc">
+                                                    <input class="form-control" type="number" v-model="xtallDEXperc">
                                                 </div>
 
                                                 <!-- xtall INT -->
                                                 <div class="col-6">
                                                     <label>INT</label>
-                                                    <input class="form-control" v-model="xtallINTflat">
+                                                    <input class="form-control" type="number" v-model="xtallINTflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>INT (%)</label>
-                                                    <input class="form-control" v-model="xtallINTperc">
+                                                    <input class="form-control" type="number" v-model="xtallINTperc">
                                                 </div>
                                             </div>
                                         </div>
@@ -1102,31 +1102,31 @@
                                                 <!-- aksesoris STR -->
                                                 <div class="col-6">
                                                     <label>STR</label>
-                                                    <input class="form-control" v-model="avaAksSTRflat">
+                                                    <input class="form-control" type="number" v-model="avaAksSTRflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>STR (%)</label>
-                                                    <input class="form-control" v-model="avaAksSTRperc">
+                                                    <input class="form-control" type="number" v-model="avaAksSTRperc">
                                                 </div>
 
                                                 <!-- aksesoris DEX -->                            
                                                 <div class="col-6">
                                                     <label>DEX</label>
-                                                    <input class="form-control" v-model="avaAksDEXflat">
+                                                    <input class="form-control" type="number" v-model="avaAksDEXflat">
                                                 </div>                            
                                                 <div class="col-6">
                                                     <label>DEX (%)</label>
-                                                    <input class="form-control" v-model="avaAksDEXperc">
+                                                    <input class="form-control" type="number" v-model="avaAksDEXperc">
                                                 </div>
 
                                                 <!-- aksesoris INT -->
                                                 <div class="col-6">
                                                     <label>INT</label>
-                                                    <input class="form-control" v-model="avaAksINTflat">
+                                                    <input class="form-control" type="number" v-model="avaAksINTflat">
                                                 </div>                            
                                                 <div class="col-6">
                                                     <label>INT (%)</label>
-                                                    <input class="form-control" v-model="avaAksINTperc">
+                                                    <input class="form-control" type="number" v-model="avaAksINTperc">
                                                 </div>
                                             </div>
                                         </div>
@@ -1147,31 +1147,31 @@
                                                 <!-- atas STR -->
                                                 <div class="col-6">
                                                     <label>STR</label>
-                                                    <input class="form-control" v-model="avaAtasSTRflat">
+                                                    <input class="form-control" type="number" v-model="avaAtasSTRflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>STR (%)</label>
-                                                    <input class="form-control" v-model="avaAtasSTRperc">
+                                                    <input class="form-control" type="number" v-model="avaAtasSTRperc">
                                                 </div>
 
                                                 <!-- atas DEX -->                            
                                                 <div class="col-6">
                                                     <label>DEX</label>
-                                                    <input class="form-control" v-model="avaAtasDEXflat">
+                                                    <input class="form-control" type="number" v-model="avaAtasDEXflat">
                                                 </div>                            
                                                 <div class="col-6">
                                                     <label>DEX (%)</label>
-                                                    <input class="form-control" v-model="avaAtasDEXperc">
+                                                    <input class="form-control" type="number" v-model="avaAtasDEXperc">
                                                 </div>
 
                                                 <!-- atas INT -->
                                                 <div class="col-6">
                                                     <label>INT</label>
-                                                    <input class="form-control" v-model="avaAtasINTflat">
+                                                    <input class="form-control" type="number" v-model="avaAtasINTflat">
                                                 </div>                            
                                                 <div class="col-6">
                                                     <label>INT (%)</label>
-                                                    <input class="form-control" v-model="avaAtasINTperc">
+                                                    <input class="form-control" type="number" v-model="avaAtasINTperc">
                                                 </div>
                                             </div>
                                         </div>
@@ -1192,31 +1192,31 @@
                                                 <!-- bawah STR -->
                                                 <div class="col-6">
                                                     <label>STR</label>
-                                                    <input class="form-control" v-model="avaBawahSTRflat">
+                                                    <input class="form-control" type="number" v-model="avaBawahSTRflat">
                                                 </div>
                                                 <div class="col-6">
                                                     <label>STR (%)</label>
-                                                    <input class="form-control" v-model="avaBawahSTRperc">
+                                                    <input class="form-control" type="number" v-model="avaBawahSTRperc">
                                                 </div>
 
                                                 <!-- bawah DEX -->                            
                                                 <div class="col-6">
                                                     <label>DEX</label>
-                                                    <input class="form-control" v-model="avaBawahDEXflat">
+                                                    <input class="form-control" type="number" v-model="avaBawahDEXflat">
                                                 </div>                            
                                                 <div class="col-6">
                                                     <label>DEX (%)</label>
-                                                    <input class="form-control" v-model="avaBawahDEXperc">
+                                                    <input class="form-control" type="number" v-model="avaBawahDEXperc">
                                                 </div>
 
                                                 <!-- bawah INT -->
                                                 <div class="col-6">
                                                     <label>INT</label>
-                                                    <input class="form-control" v-model="avaBawahINTflat">
+                                                    <input class="form-control" type="number" v-model="avaBawahINTflat">
                                                 </div>                            
                                                 <div class="col-6">
                                                     <label>INT (%)</label>
-                                                    <input class="form-control" v-model="avaBawahINTperc">
+                                                    <input class="form-control" type="number" v-model="avaBawahINTperc">
                                                 </div>
                                             </div>
                                         </div>
