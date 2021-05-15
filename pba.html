@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
-    <title>Kaesa Kal A&PB</title>
+    <title>Kaesa Kalkulator Pandai Besi & Alkimia</title>
   </head>
   <body style="background-color: lightsteelblue;">
     <div class="container" style="background-color: blue;" id="app">
@@ -573,15 +573,15 @@
                         <h3>Ramuan yang Dibuat</h3>
                     </div>
                     <div class="card-title pt-1">
-                        <!-- Catatan Perlengkapan Yang Dibuat -->
+                        <!-- Catatan Ramuan Yang Dibuat -->
                         <div class="card border-danger">
                             <h5 class="card-header bg-danger text-white">
                                 📔 Catatan!
                             </h5>
                             <div class="card-body">
                             <p>
-                                Contoh dibawah ini adalah perlengkapan <a v-bind:href="tautanRamuan"><strong>{{namaRamuan}}</strong></a>.
-                                Anda dapat melihat status perlengkapan yang dibuat pada <strong style="color: orangered;">"Tampilan Resep dan Detail"</strong>.
+                                Contoh dibawah ini adalah ramuan (potion/item) <a v-bind:href="tautanRamuan"><strong>{{namaRamuan}}</strong></a>.
+                                Anda dapat melihat status ramuan yang dibuat pada <strong style="color: orangered;">"Tampilan Resep dan Detail"</strong>.
                             </p>
                             <ul>
                                 <li><strong style="color: orangered;">Tampilan Resep:</strong> 
@@ -1359,10 +1359,10 @@
                                 <td>{{totalAvaINTperc}}%</td>
                             </tr>
                         </table>
-                        <!-- table status avatar -->
+                        <!-- table hasil status lainnya -->
                         <table class="table table-bordered text-center">
                             <thead class="table-dark">
-                                <th colspan="3">Hasil Status Lainnya</th>
+                                <th colspan="3">Hasil Status Lainnya [S.L.]</th>
                             </thead>
                             <tr class="table-secondary">
                                 <th>STR</th>
@@ -1389,9 +1389,9 @@
                                 <th colspan="3">Status Perc (%) ke Flat S.L.</th>
                             </tr>
                             <tr>
-                                <td>{{str}} * {{totalSTRperc}}% = {{totalSTRptf}}</td>
-                                <td>{{dex}} * {{totalDEXperc}}% = {{totalDEXptf}}</td>
-                                <td>{{int}} * {{totalINTperc}}% = {{totalINTptf}}</td>
+                                <td>{{str}} * {{totalSTRperc}}% = <b>{{totalSTRptf}}</b></td>
+                                <td>{{dex}} * {{totalDEXperc}}% = <b>{{totalDEXptf}}</b></td>
+                                <td>{{int}} * {{totalINTperc}}% = <b>{{totalINTptf}}</b></td>
                             </tr>
                             <tr class="table-secondary">
                                 <th colspan="3">Status Keseluruhan S.L.</th>
@@ -1402,6 +1402,87 @@
                                 <td>{{totalINTkes}}</td>
                             </tr>
                         </table>
+                        <!-- Catatan Hasil Status Lainnya -->
+                        <div class="card border-danger">
+                            <h5 class="card-header bg-danger text-white">
+                                📔 Catatan!
+                            </h5>
+                            <div class="card-body">
+                                <p>
+                                    <strong style="color: orangered;">Status Perc (%) ke Flat S.L.</strong> adalah mengubah status yang 
+                                    <span style="color: red;">persen</span> ke <span style="color: green;">flat</span>, 
+                                    dan dihitungnya berdasarkan <strong style="color: orangered;">hanya status karakter</strong>, 
+                                    bukan total keseluruhan status flat (karakter, makanan, perlengkapan, dan kostum). 
+                                </p>
+                            </div>
+                        </div>
+                        <!-- table hasil keseluruhan -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th colspan="3">Hasil Keseluruhan</th>
+                            </thead>
+                            <tr class="table-secondary">
+                                <th>STR</th>
+                                <th>DEX</th>
+                                <th>INT</th>
+                            </tr>
+                            <tr>
+                                <td>{{str}} + {{totalSTRkes}} = <strong>{{totalSTR}}</strong></td>
+                                <td>{{dex}} + {{totalDEXkes}} = <strong>{{totalDEX}}</strong></td>
+                                <td>{{int}} + {{totalINTkes}} = <strong>{{totalINT}}</strong></td>
+                            </tr>
+                        </table>
+                        <!-- table kesulitan pemain {difficulty player} -->
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <th>Kesulitan (Difficulty)</th>
+                                <th>Nilai</th>
+                            </thead>
+                            <tr>
+                                <th>Pemain TEC {{tec}}/2</th>
+                                <td>{{kesPemainTEC}}</td>
+                            </tr>
+                            <tr>
+                                <th>Pemain DEX {{totalDEX}}/6</th>
+                                <td>{{kesPemainDEX}}</td>
+                            </tr>
+                            <tr class="table-dark">
+                                <th>Total Kesulitan Pemain {{kesPemainTEC}}+{{kesPemainDEX}}</th>
+                                <td>{{kesPemainTD}}</td>
+                            </tr>
+                            <tr>
+                                <th>Level Kemahiran Tempa</th>
+                                <td>{{lvKemahiranTempa}}</td>
+                            </tr>
+                            <tr class="table-dark">
+                                <th>Kesulitan Pandai Besi {{kesPemainTD}}+{{lvKemahiranTempa}}</th>
+                                <td>{{totalKesPemainPandaiBesi}}/{{kesulitanPerlengkapan}}</td>
+                            </tr>
+                            <tr>
+                                <th>Level Kemahiran Padu</th>
+                                <td>{{lvKemahiranPadu}}</td>
+                            </tr>
+                            <tr class="table-dark">
+                                <th>Kesulitan Alkimia {{kesPemainTD}}+{{lvKemahiranPadu}}</th>
+                                <td>{{totalKesPemainAlkimia}}/{{kesulitanRamuan}}</td>
+                            </tr>
+                        </table>
+                        <!-- Catatan Hasil Status Lainnya -->
+                        <div class="card border-danger">
+                            <h5 class="card-header bg-danger text-white">
+                                📔 Catatan!
+                            </h5>
+                            <div class="card-body">
+                                <p>
+                                    Jika kesulitan pemain (difficulty player) Anda <strong style="color: orangered;">kurang dari</strong> kesulitan perlengkapan/ramuan (difficulty equipment/potion) maka 
+                                    Anda <strong style="color: orangered;">tidak</strong> akan bisa membuat perlengkapan/ramuan (equipment/potion). 
+                                </p>
+                                <ul>
+                                    <li>Kesulitan Pemain/Kesulitan Perlengkapan : {{totalKesPemainPandaiBesi}}/{{kesulitanPerlengkapan}}</li>
+                                    <li>Kesulitan Pemain/Kesulitan Ramuan : {{totalKesPemainAlkimia}}/{{kesulitanRamuan}}</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1414,58 +1495,57 @@
                     </div>
                     <div class="collapse pt-2" id="kalPandaiBesi">
                         <div class="card">
+                            <!-- Potensial Perlengkapan -->
                             <div class="card-header">
                                 <h3>Potensial Perlengkapan (Pot Equipment)</h3>
                             </div>
                             <table class="card-table table table-striped text-nowrap">
                             <tr>
-                                <th> Pedang </th>
-                                <td> <input class="form-control col-4" type="number" id="pedang" v-model="pedang" disabled> </td>
+                                <th>Pedang 1-Tangan (One-Handed Sword) [1h]</th>
+                                <td><input class="form-control col-4" type="number" id="pedang" v-model="pedang" disabled> </td>
                             </tr>
                             <tr>
-                                <th> Pedang 2 tangan </th>
-                                <td> <input class="form-control col-4" type="number" id="pedangraya" v-model="pedangraya" disabled> </td>
+                                <th>Pedang 2-Tangan (Two-Handed Sword) [2h]</th>
+                                <td><input class="form-control col-4" type="number" id="pedangraya" v-model="pedangraya" disabled> </td>
                             </tr>
                             <tr>
-                                <th> Busur </th>
-                                <td> <input class="form-control col-4" type="number" id="bow" v-model="bow" disabled> </td>
+                                <th>Busur (Bow)</th>
+                                <td><input class="form-control col-4" type="number" id="bow" v-model="bow" disabled> </td>
                             </tr>
                             <tr>
-                                <th> Bowgun </th>
-                                <td> <input class="form-control col-4" type="number" id="bowgun" v-model="bowgun" disabled> </td>
+                                <th>Bowgun (Bowgun) [bg]</th>
+                                <td><input class="form-control col-4" type="number" id="bowgun" v-model="bowgun" disabled> </td>
                             </tr>
                             <tr>
-                                <th> Tongkat </th>
-                                <td> <input class="form-control col-4" type="number" id="tongkat" v-model="tongkat" disabled> </td>
+                                <th>Tongkat (Staff)</th>
+                                <td><input class="form-control col-4" type="number" id="tongkat" v-model="tongkat" disabled> </td>
                             </tr>
                             <tr>
-                                <th> Alat Sihir </th>
-                                <td> <input class="form-control col-4" type="number" id="md"  v-model="md" disabled> </td>
-                            </tr>
-                
-                            <tr>
-                                <th> Tinju </th>
-                                <td> <input class="form-control col-4" type="number" id="tinju" v-model="tinju" disabled> </td>
+                                <th>Alat Sihir (Magic Device) [md]</th>
+                                <td><input class="form-control col-4" type="number" id="md"  v-model="md" disabled> </td>
                             </tr>
                 
                             <tr>
-                                <th> Tombak </th>
-                                <td> <input class="form-control col-4" type="number" id="tombak" v-model="tombak" disabled> </td>
-                            </tr>
-                
-                            <tr>
-                                <th> katana </th>
-                                <td> <input class="form-control col-4" type="number" id="katana"  v-model="katana" disabled> </td>
+                                <th>Sarung Tinju (Knuckle) [knuk]</th>
+                                <td><input class="form-control col-4" type="number" id="tinju" v-model="tinju" disabled> </td>
                             </tr>
                             <tr>
-                                <th> Zirah </th>
-                                <td> <input class="form-control col-4" type="number" id="zirah" v-model="zirah" disabled> </td>
+                                <th>Tombak (Halberd) [hb]</th>
+                                <td><input class="form-control col-4" type="number" id="tombak" v-model="tombak" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th>Katana (Katana)</th>
+                                <td><input class="form-control col-4" type="number" id="katana"  v-model="katana" disabled> </td>
+                            </tr>
+                            <tr>
+                                <th>Zirah (Armor) [arm]</th>
+                                <td><input class="form-control col-4" type="number" id="zirah" v-model="zirah" disabled> </td>
                             </tr>
                             </table>
                 
                             <hr class="my-1">
                 
-                            <div class="row">
+                            <!-- <div class="row">
                             <div class="col-md-6">
                             <div class="form-group p-3">
                             <label class="form-label">Total Status DEX (flat)</label>
@@ -1498,7 +1578,7 @@
                                 <input disabled="disabled" class="form-control">
                                 </div>
                             </div>
-                            </div>
+                            </div> -->
                 
                         </div>
                     </div>
@@ -1517,8 +1597,8 @@
                         </div>
                         <div class="d-grid gap-2 col-2">
                             <button class="btn btn-success " type="button" data-bs-toggle="collapse" 
-                            data-bs-target="#kalAlkimia, #penguranganPoinBahan, #keterampilanPadu, #suksesRatePaduRamuan" aria-expanded="false" 
-                            aria-controls="kalAlkimia, penguranganPoinBahan, keterampilanPadu, suksesRatePaduRamuan">
+                            data-bs-target="#kalAlkimia, #penguranganPoinBahan, #keterampilanPadu, #suksesRatePaduRamuan, #lockPerlengkapan" aria-expanded="false" 
+                            aria-controls="kalAlkimia, penguranganPoinBahan, keterampilanPadu, suksesRatePaduRamuan, lockPerlengkapan">
                                 Semua
                             </button>
                         </div>
@@ -1569,7 +1649,6 @@
                                 <!-- pembatas -->
                                 <hr class="my-2">
 
-                                <!-- Button Keterampilan Padu -->
                                 <div>
                                     <table class="table table-bordered table-striped">
                                         <thead class="table-dark text-center">
@@ -1581,75 +1660,63 @@
                                             <td>{{lvRamuan}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Kesulitan Ramuan</th>
-                                            <td>{{kesulitanRamuan}}</td>
-                                        </tr>
-                                    </table>
-                                    <table class="table table-bordered table-striped">
-                                        <thead class="table-dark text-center">
-                                            <th>Ketarangan Status</th>
-                                            <th>Nilai</th>
-                                        </thead>
-                                        <tr>
-                                            <th>Status Karakter TEC</th>
-                                            <td>{{tec}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Status Karakter INT</th>
-                                            <td>{{int}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Status INT Flat</th>
-                                            <td>{{tec}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Status INT Persen</th>
-                                            <td>{{tec}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total INT</th>
-                                            <td>{{tec}}</td>
+                                            <th>Kesulitan Pemain/Kesulitan Ramuan</th>
+                                            <td>{{totalKesPemainAlkimia}}/{{kesulitanRamuan}}</td>
                                         </tr>
                                     </table>
                                    
                                 </div>
+
+                                <!-- Button Sukses Rate Padu Ramuan -->
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
                                     data-bs-target="#suksesRatePaduRamuan" aria-expanded="false" 
                                     aria-controls="suksesRatePaduRamuan">
-                                        Sukses Rate Padu Ramuan [{{totalKeterampilanPadu}}]
+                                        Sukses Rate Padu Ramuan [{{totalSrPaduRamuan2}}% | {{totalSrPaduRamuan4}}%]
                                     </button>
                                 </div>
-                                <!-- Collapse Keterampilan Padu -->
+                                <!-- Collapse Sukses Rate Padu Ramuan -->
                                 <div class="collapse pt-2" id="suksesRatePaduRamuan">
                                     <table class="table table-bordered table-striped">
                                         <thead class="table-dark">
-                                            <th>Keterampilan Padu</th>
+                                            <th>Sukses Rate Padu Ramuan</th>
                                             <th>Nilai</th>
                                         </thead>
                                         <tr>
-                                            <th>Dasar {Base/Default}</th>
-                                            <td>{{dasarKeterampilanPadu}}</td>
+                                            <th>Padu Item (Item Synthesis) Lv{{lvPaduItem}}</th>
+                                            <td>{{srPaduRamuan1}}%</td>
                                         </tr>
                                         <tr>
-                                            <th>Padu Perlengkapan (Synthesize Equipment) Lv{{lvPaduPerlengkapan}}*10</th>
-                                            <td>{{ketPadu1}}</td>
+                                            <th>Sintesis Sedang (Mid-Class Synthesis) Lv{{lvSintesisSedang}}</th>
+                                            <td>{{srPaduRamuan2}}%</td>
                                         </tr>
                                         <tr>
-                                            <th>Teknik Sintesis I (Tecnical Synthesis I) Lv{{lvTeknikSintesisI}}*15</th>
-                                            <td>{{ketPadu2}}</td>
+                                            <th>Sintesis Klas Tinggi (High-Class Synthesis) Lv{{lvSintesisKlasTinggi}}</th>
+                                            <td>{{srPaduRamuan3}}%</td>
                                         </tr>
                                         <tr>
-                                            <th>Teknik Sintesis II (Tecnical Synthesis II) Lv{{lvTeknikSintesisII}}*20</th>
-                                            <td>{{ketPadu3}}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Status Karakter TEC +{{tec}}*2</th>
-                                            <td>{{ketPadu4}}</td>
+                                            <th>Sintesis Ahli (Expert's Synthesis) Lv{{lvSintesisAhli}}</th>
+                                            <td>{{srPaduRamuan4}}%</td>
                                         </tr>
                                         <tr class="table-dark">
-                                            <th>Total</th>
-                                            <th>{{totalKeterampilanPadu}}</th>
+                                            <th>Total S.R. Skill</th>
+                                            <th>{{totalSrPaduRamuan1}}%</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Status Karakter INT+{{int}}/10</th>
+                                            <td>{{srPaduRamuanINT}}%</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Total S.R. {{totalSrPaduRamuan1}}+{{srPaduRamuanINT}}</th>
+                                            <th>{{totalSrPaduRamuan2}}%</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Kesulitan Pemain</th>
+                                            <td>{{totalKesPemainAlkimia}}%</td>
+                                        </tr>
+                                        <tr class="table-dark">
+                                            <th>Sukses Rate: {{totalSrPaduRamuan1}}%+{{srPaduRamuanINT}}%+{{totalKesPemainAlkimia}}%-{{kesulitanRamuan}}%</th>
+                                            <th>{{totalSrPaduRamuan3}}%/{{totalSrPaduRamuan4}}%</th>
                                         </tr>
                                     </table>
                                 </div>
@@ -1701,6 +1768,70 @@
 
                                 <!-- pembatas -->
                                 <hr class="my-2">
+
+                                <!-- Button Lock / Padu Perlengkapan -->
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#lockPerlengkapan" aria-expanded="false" 
+                                    aria-controls="lockPerlengkapan">
+                                        Sukses Rate Lock {{lock}}/5: [{{srLock1}}%]
+                                    </button>
+                                </div>
+                                <!-- Collapse Lock / Padu Perlengkapan -->
+                                <div class="collapse pt-2" id="lockPerlengkapan">
+                                    <table class="table table-bordered table-striped text-center">
+                                        <thead class="table-dark">
+                                            <th colspan="6">Lock / Padu Perlengkapan</th>
+                                        </thead>
+                                        <tr class="table-dark">
+                                            <th>Keterangan</th>
+                                            <th colspan="5">Nilai</th>
+                                        </tr>
+                                        <tr class="table-info">
+                                            <th>Kunci (Lock)</th>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Kemahiran Padu</th>
+                                            <td>0</td>
+                                            <td>50</td>
+                                            <td>100</td>
+                                            <td>150</td>
+                                            <td>200</td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <th>Pinalty</th>
+                                            <td>{{pty1}}</td>
+                                            <td>{{pty2}}</td>
+                                            <td>{{pty3}}</td>
+                                            <td>{{pty4}}</td>
+                                            <td>{{pty5}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Rumus</th>
+                                            <td>{{totalKeterampilanPadu}}/{{pty1}}</td>
+                                            <td>{{totalKeterampilanPadu}}/{{pty2}}</td>
+                                            <td>{{totalKeterampilanPadu}}/{{pty3}}</td>
+                                            <td>{{totalKeterampilanPadu}}/{{pty4}}</td>
+                                            <td>{{totalKeterampilanPadu}}/{{pty5}}</td>
+                                        </tr>
+                                        <tr class="table-success">
+                                            <th>Sukses Rate</th>
+                                            <td>{{lock1}}%</td>
+                                            <td>{{lock2}}%</td>
+                                            <td>{{lock3}}%</td>
+                                            <td>{{lock4}}%</td>
+                                            <td>{{lock5}}%</td>
+                                        </tr>         
+                                    </table>
+                                </div>
+
+                                 <!-- pembatas -->
+                                 <hr class="my-2">
 
                             </div>
                         </div>

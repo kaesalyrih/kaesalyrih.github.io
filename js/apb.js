@@ -150,7 +150,14 @@ var app = new Vue({
         lvTeknikSintesisII: 0,
         // kemahiran & keterampilan padu
         dasarKemahiranPadu: 50,
-        dasarKeterampilanPadu: 50,        
+        dasarKeterampilanPadu: 50,
+        
+        // Pinalty
+        pty1: 0.5,
+        pty2: 2,
+        pty3: 4.5,
+        pty4: 8,
+        pty5: 12.5,
 
     },
     computed: {
@@ -192,6 +199,9 @@ var app = new Vue({
         totalSTRkes: function() {
             return hasil = Number(this.totalSTRflat)+Number(this.totalSTRptf)
         },
+        totalSTR: function() {
+            return hasil = Number(this.totalSTRkes)+Number(this.str)
+        },
 
         // DEX perlengkapan flat
         totalPerlengkapanDEXflat1: function() {
@@ -230,6 +240,9 @@ var app = new Vue({
         totalDEXkes: function() {
             return hasil = Number(this.totalDEXflat)+Number(this.totalDEXptf)
         },
+        totalDEX: function() {
+            return hasil = Number(this.totalDEXkes)+Number(this.dex)
+        },
 
         // INT perlengkapan flat
         totalPerlengkapanINTflat1: function() {
@@ -267,6 +280,27 @@ var app = new Vue({
         },
         totalINTkes: function() {
             return hasil = Number(this.totalINTflat)+Number(this.totalINTptf)
+        },
+        totalINT: function() {
+            return hasil = Number(this.totalINTkes)+Number(this.int)
+        },
+
+
+        // kesulitan pemain (difficulty player)
+        kesPemainTEC: function() {
+            return hasil = Number(Math.floor(this.tec/2))
+        },
+        kesPemainDEX: function() {
+            return hasil = Number(Math.floor(this.dex/6))
+        },
+        kesPemainTD: function() {
+            return hasil = Number(this.kesPemainTEC)+Number(this.kesPemainDEX)
+        },
+        totalKesPemainPandaiBesi: function() {
+            return hasil = Number(this.lvKemahiranTempa)+Number(this.kesPemainTD)
+        },
+        totalKesPemainAlkimia: function() {
+            return hasil = Number(this.lvKemahiranPadu)+Number(this.kesPemainTD)
         },
 
         // perhitungan pandai besi...............................................
@@ -420,15 +454,14 @@ var app = new Vue({
             return hasil = Number(this.int)/10
         },
         totalSrPaduRamuan2: function() {
-            return hasil = Number(this.lvPaduItem)
+            return hasil = Number(this.totalSrPaduRamuan1)+Number(this.srPaduRamuanINT)
         },
-
-        // kesulitan pemain alkimia (Difficulty Player Alchemy)
-        kesPemainAlkimiaTEC: function() {
-            return hasil = Number(this.tec)/2
+        totalSrPaduRamuan3: function() {
+            let hasil = Number(this.totalSrPaduRamuan2)+Number(this.totalKesPemainAlkimia)-Number(this.kesulitanRamuan)
+            return hasil.toFixed(2)
         },
-        totalKesPemainAlkimia: function() {
-            return hasil = Number(this.lvKemahiranPadu)+Number(this.kesPemainAlkimiaTEC)
+        totalSrPaduRamuan4: function() {
+            return hasil = Number(Math.floor(this.totalSrPaduRamuan3))
         },
 
 
@@ -447,6 +480,53 @@ var app = new Vue({
         },
         totalKeterampilanPadu: function() {
             return hasil = Number(this.dasarKeterampilanPadu)+Number(this.ketPadu1)+Number(this.ketPadu2)+Number(this.ketPadu3)+Number(this.ketPadu4)
+        },
+
+        // lock / padu perlengkapan
+        lock: function() {
+            return hasil = Number(Math.floor(this.lvKemahiranPadu/50))+1
+        },
+        lock1: function() {
+            let a = Number(this.totalKeterampilanPadu)/Number(this.pty1)
+            let hasil = Number(Math.min(a, 100))
+            return hasil.toFixed(2)
+        },
+        lock2: function() {
+            let a = Number(this.totalKeterampilanPadu)/Number(this.pty2)
+            let hasil = Number(Math.min(a, 100))
+            return hasil.toFixed(2)
+        },
+        lock3: function() {
+            let a = Number(this.totalKeterampilanPadu)/Number(this.pty3)
+            let hasil = Number(Math.min(a, 100))
+            return hasil.toFixed(2)
+        },
+        lock4: function() {
+            let a = Number(this.totalKeterampilanPadu)/Number(this.pty4)
+            let hasil = Number(Math.min(a, 100))
+            return hasil.toFixed(2)
+        },
+        lock5: function() {
+            let a = Number(this.totalKeterampilanPadu)/Number(this.pty5)
+            let hasil = Number(Math.min(a, 100))
+            return hasil.toFixed(2)
+        },
+        srLock1: function(lock) {
+            if (lock = 1) {
+                return hasil = Number(this.lock1)
+            }
+            else if (lock = 2) {
+                return hasil = Number(this.lock2)
+            }
+            else if (lock = 3) {
+                return hasil = Number(this.lock3)
+            }
+            else if (lock = 4) {
+                return hasil = Number(this.lock4)
+            }
+            else {
+                return hasil = Number(this.lock5)
+            }
         },
 
 
