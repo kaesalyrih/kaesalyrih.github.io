@@ -1505,21 +1505,21 @@
                                 <th>Total Kesulitan Pemain {{kesPemainTEC}}+{{kesPemainDEX}}</th>
                                 <td>{{kesPemainTD}}</td>
                             </tr>
-                            <tr>
+                            <tr class="table-danger">
                                 <th>Level Kemahiran Tempa</th>
                                 <td>{{lvKemahiranTempa}}</td>
                             </tr>
-                            <tr class="table-dark">
-                                <th>Kesulitan Pandai Besi {{kesPemainTD}}+{{lvKemahiranTempa}}</th>
-                                <td>{{totalKesPemainPandaiBesi}}/{{kesulitanPerlengkapan}}</td>
+                            <tr class="table-danger">
+                                <th>Kesulitan Pandai Besi <span style="color: orangered;">P</span>/<span style="color: darkmagenta;">P</span> {{kesPemainTD}}+{{lvKemahiranTempa}}</th>
+                                <td><span style="color: orangered;">{{totalKesPemainPandaiBesi}}</span>/<span style="color: darkmagenta;">{{kesulitanPerlengkapan}}</span></td>
                             </tr>
-                            <tr>
+                            <tr class="table-success">
                                 <th>Level Kemahiran Padu</th>
                                 <td>{{lvKemahiranPadu}}</td>
                             </tr>
-                            <tr class="table-dark">
-                                <th>Kesulitan Alkimia {{kesPemainTD}}+{{lvKemahiranPadu}}</th>
-                                <td>{{totalKesPemainAlkimia}}/{{kesulitanRamuan}}</td>
+                            <tr class="table-success">
+                                <th>Kesulitan Alkimia <span style="color: orangered;">P</span>/<span style="color: darkmagenta;">R</span> {{kesPemainTD}}+{{lvKemahiranPadu}}</th>
+                                <td><span style="color: orangered;">{{totalKesPemainAlkimia}}</span>/<span style="color: darkmagenta;">{{kesulitanRamuan}}</span></td>
                             </tr>
                         </table>
                         <!-- Catatan Hasil Status Lainnya -->
