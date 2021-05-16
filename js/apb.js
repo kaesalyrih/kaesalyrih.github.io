@@ -13,7 +13,7 @@ var app = new Vue({
 
         // status masakan....................................................
         foodSTR: 0,
-        foodDEX: 22,
+        foodDEX: 0,
         foodINT: 0,
 
         // status perlengkapan....................................................
@@ -59,6 +59,10 @@ var app = new Vue({
         specialINTflat: 0,
         specialINTperc: 0,
         // xtall tambahan
+        xtall1: 0,
+        xtall2: 0,
+        jxtall1: 1,
+        jxtall2: 1,
         // Beri Deskripsi: Anda harus menjumlahkan sendiri Status Xtall anda.
         xtallSTRflat: 0,
         xtallSTRperc: 0,
@@ -166,6 +170,7 @@ var app = new Vue({
         totalStatusKarakter: function() {
             return hasil = Number(this.str)+Number(this.int)+Number(this.vit)+Number(this.agi)+Number(this.dex)+Number(this.tec)+Number(this.luk)
         },
+
         // STR perlengkapan flat
         totalPerlengkapanSTRflat1: function() {
             return hasil = Number(this.weapSTRflat)+Number(this.subWeapSTRflat)+Number(this.armSTRflat)+Number(this.additionalSTRflat)+Number(this.specialSTRflat)
@@ -212,7 +217,7 @@ var app = new Vue({
             return hasil = Number(this.weapDEXflat)+Number(this.subWeapDEXflat)+Number(this.armDEXflat)+Number(this.additionalDEXflat)+Number(this.specialDEXflat)+Number(this.additional)+Number(this.special)
         },
         totalPerlengkapanDEXflat2: function() {
-            return hasil = Number(this.totalPerlengkapanDEXflat1)+Number(this.xtallDEXflat)
+            return hasil = Number(this.totalPerlengkapanDEXflat1)+Number(this.totalXtallDEXflat)
         },
         // DEX perlengkapan perc
         totalPerlengkapanDEXperc1: function() {
@@ -287,6 +292,17 @@ var app = new Vue({
         },
         totalINT: function() {
             return hasil = Number(this.totalINTkes)+Number(this.int)
+        },
+
+        // xtall
+        totalXtall1: function() {
+            return hasil = Number(this.xtall1)*Number(this.jxtall1)
+        },
+        totalXtall2: function() {
+            return hasil = Number(this.xtall2)*Number(this.jxtall2)
+        },
+        totalXtallDEXflat: function() {
+            return hasil = Number(this.totalXtall1)+Number(this.totalXtall2)
         },
 
 
@@ -517,7 +533,7 @@ var app = new Vue({
             return hasil.toFixed(2)
         },
         srLock1: function() {
-            var a = this.lock;
+            let a = this.lock;
             if (a == 5) {
                 return hasil = this.lock5
             } 
@@ -533,7 +549,7 @@ var app = new Vue({
             else if (a == 1) {
                 return hasil = this.lock1
             }
-        },
+        }
 
     },
     methods: {
@@ -549,6 +565,6 @@ var app = new Vue({
             b = Number(b)
             var c = a + b
             return Number(c)
-        },
+        }
     }
 });

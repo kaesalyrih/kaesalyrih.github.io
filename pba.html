@@ -71,7 +71,7 @@
                                     <th colspan="3">Proses Material (Process Materials)</th>
                                     <tr>
                                         <td><img src="https://toram-id.info/img/skill/smith/processmaterials.png" class="img-thumbnail me-4 d-block" alt=""></td>
-                                        <td><strong>Level</strong><input class="form-control" type="number" v-model="lvProsesMaterial"></td>
+                                        <td><strong>Level</strong><input class="form-control" type="number" min="0" max="10" v-model="lvProsesMaterial"></td>
                                         <td><strong>Proses Bahan (%)</strong><input class="form-control" disabled="disabled" v-model="prosesBahan"></td>
                                     </tr>
                                 </table>
@@ -100,22 +100,22 @@
                                         <th colspan="2">Anvil Pemula (Novice's Anvil)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/noviceanvil.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvAnvilPemula"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvAnvilPemula"></td>
                                         </tr>
                                         <th colspan="2">Anvil Perajin (Craftsman's Anvil)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/craftsmananvil.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvAnvilPerajin"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvAnvilPerajin"></td>
                                         </tr>
                                         <th colspan="2">Anvil Pandai Besi (Blacksmith's Anvil)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/blacksmithanvil.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvAnvilPandaiBesi"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvAnvilPandaiBesi"></td>
                                         </tr>
                                         <th colspan="2">Anvil Pro (Master's Anvil)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/thumb/anvil-pro-masters-anvil29.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvAnvilPro"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvAnvilPro"></td>
                                         </tr>
                                     </table>
                                     </div>
@@ -133,22 +133,22 @@
                                         <th colspan="2">Tempa Perlengkapan (Refine Equipment)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvTempaPerlengkapan"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvTempaPerlengkapan"></td>
                                         </tr>
                                         <th colspan="2">Tempaan Sedang (Mid-Class Refinement)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvTempaanSedang"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvTempaanSedang"></td>
                                         </tr>
                                         <th colspan="2">Tempaan Kelas Tinggi (High-Class Refinement)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvTempaanKelasTinggi"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvTempaanKelasTinggi"></td>
                                         </tr>
                                         <th colspan="2">Tempaan Ahli (Expert's Refinement)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/refineeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvTempaanAhli"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvTempaanAhli"></td>
                                         </tr>
                                     </table>
                                     </div>
@@ -166,17 +166,17 @@
                                         <th colspan="2">Buat Perlengkapan (Create Equipment)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/createeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvBuatPerlengkapan"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvBuatPerlengkapan"></td>
                                         </tr>
                                         <th colspan="2">Kreasi Cermat (Careful Creation)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/createeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvKreasiCermat"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvKreasiCermat"></td>
                                         </tr>
                                         <th colspan="2">Kreasi Ahli (Expert's Creation)</th>
                                         <tr>
                                             <td><img src="https://toram-id.info/img/skill/smith/createeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                            <td><input class="form-control" type="number" v-model="lvKreasiAhli"></td>
+                                            <td><input class="form-control" type="number" min="0" max="10" v-model="lvKreasiAhli"></td>
                                         </tr>
                                     </table>
                                     </div>
@@ -194,17 +194,17 @@
                                             <th colspan="2">Perkuat Perlengkapan (Customize Equipment)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/smith/customizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvPerkuatPerlengkapan"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvPerkuatPerlengkapan"></td>
                                             </tr>
                                             <th colspan="2">Penguatan Akurat (Accurate Customization)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/smith/customizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvPenguatanAkurat"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvPenguatanAkurat"></td>
                                             </tr>
                                             <th colspan="2">Penguatan Ahli (Expert's Customization)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/smith/customizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvPenguatanAhli"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvPenguatanAhli"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -235,22 +235,22 @@
                                             <th colspan="2">Bejana Pemula (Novice's Bottle)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/novicebottle.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvBejanaPemula"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvBejanaPemula"></td>
                                             </tr>
                                             <th colspan="2">Bejana Perajin (Craftman's Bottle)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/craftsmanbottle.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvBejanaPerajin"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvBejanaPerajin"></td>
                                             </tr>
                                             <th colspan="2">Bejana Pakar Padu (Synthesist's Bottle)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/synthesistbottle.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvBejanaPakarPadu"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvBejanaPakarPadu"></td>
                                             </tr>
                                             <th colspan="2">Bejana Pro (Master's Bottle)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/thumb/bejana-pro-masters-bottle15.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvBejanaPro"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvBejanaPro"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -268,22 +268,22 @@
                                             <th colspan="2">Padu Item (Item Synthesis)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvPaduItem"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvPaduItem"></td>
                                             </tr>
                                             <th colspan="2">Sintesis Sedang (Mid-Class Synthesis)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvSintesisSedang"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvSintesisSedang"></td>
                                             </tr>
                                             <th colspan="2">Sintesis Klas Tinggi (High-Class Synthesis)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvSintesisKlasTinggi"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvSintesisKlasTinggi"></td>
                                             </tr>
                                             <th colspan="2">Sintesis Ahli (Expert's Synthesis)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/itemsynth.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvSintesisAhli"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvSintesisAhli"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -301,17 +301,17 @@
                                             <th colspan="2">Padu Perlengkapan (Synthesize Equipment)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/synthesizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvPaduPerlengkapan"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvPaduPerlengkapan"></td>
                                             </tr>
                                             <th colspan="2">Teknik Sintesis I (Tecnical Synthesis I)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/synthesizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvTeknikSintesisI"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvTeknikSintesisI"></td>
                                             </tr>
                                             <th colspan="2">Teknik Sintesis II (Tecnical Synthesis II)</th>
                                             <tr>
                                                 <td><img src="https://toram-id.info/img/skill/alchemy/synthesizeeq.png" class="img-thumbnail mx-auto d-block" alt=""></td>
-                                                <td><input class="form-control" type="number" v-model="lvTeknikSintesisII"></td>
+                                                <td><input class="form-control" type="number" min="0" max="10" v-model="lvTeknikSintesisII"></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -332,7 +332,7 @@
                                     <tr>
                                         <td>
                                             <strong>Level</strong>
-                                            <input class="form-control col-6" type="number" v-model="lvKemahiranTempa">
+                                            <input class="form-control col-6" type="number" min="0" max="250" v-model="lvKemahiranTempa">
                                         </td>
                                         <td>
                                             <strong>Batas (Limit)</strong>
@@ -385,7 +385,7 @@
                                     <tr>
                                         <td>
                                             <strong>Level</strong>
-                                            <input class="form-control col-6" type="number" v-model="lvKemahiranPadu">
+                                            <input class="form-control col-6" type="number" min="0" max="250" v-model="lvKemahiranPadu">
                                         </td>
                                         <td>
                                             <strong>Batas (Limit)</strong>
@@ -564,7 +564,7 @@
                                     <!-- maksimal kemahiran tempa -->
                                     <div>
                                         <label><strong>Maksimal Kemahiran Tempa yang Bisa Diperoleh</strong></label>
-                                        <input class="form-control" type="number" type="number" v-model="maxKemahiranTempa" disabled>
+                                        <input class="form-control" type="number" v-model="maxKemahiranTempa" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -619,7 +619,7 @@
                                     <!-- maksimal kemahiran padu -->
                                     <div>
                                         <label><strong>Maksimal Kemahiran Padu yang Bisa Diperoleh</strong></label>
-                                        <input class="form-control" type="number" type="number" v-model="maxKemahiranPadu" disabled>
+                                        <input class="form-control" type="number" v-model="maxKemahiranPadu" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -1067,6 +1067,56 @@
                                                     <label>INT (%)</label>
                                                     <input class="form-control" type="number" v-model="xtallINTperc">
                                                 </div>
+                                                <div class="col-6">
+                                                    <div class="row g-0">
+                                                        <!-- option xtall satu -->
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>Xtall 1, DEX+{{totalXtall1}}</label>
+                                                                <select class="form-control" v-model="xtall1">
+                                                                    <option value="0">Kosong</option>
+                                                                    <option value="8">DEX+8</option>
+                                                                    <option value="7">DEX+7</option>
+                                                                    <option value="6">DEX+6</option>
+                                                                    <option value="5">DEX+5</option>
+                                                                    <option value="4">DEX+4</option>
+                                                                    <option value="3">DEX+3</option>
+                                                                    <option value="2">DEX+2</option>
+                                                                    <option value="1">DEX+1</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>Jumlah</label>
+                                                            <input class="form-control" type="number" v-model="jxtall1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="row g-0">
+                                                        <!-- option xtall dua -->
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label>Xtall 2 DEX+{{totalXtall2}}</label>
+                                                                <select class="form-control" v-model="xtall2">
+                                                                    <option value="0">Kosong</option>
+                                                                    <option value="8">DEX+8</option>
+                                                                    <option value="7">DEX+7</option>
+                                                                    <option value="6">DEX+6</option>
+                                                                    <option value="5">DEX+5</option>
+                                                                    <option value="4">DEX+4</option>
+                                                                    <option value="3">DEX+3</option>
+                                                                    <option value="2">DEX+2</option>
+                                                                    <option value="1">DEX+1</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label>Jumlah</label>
+                                                            <input class="form-control" type="number" v-model="jxtall2">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1301,7 +1351,7 @@
                             </tr>
                             <tr>
                                 <td>{{xtallSTRflat}}</td>
-                                <td>{{xtallDEXflat}}</td>
+                                <td>{{totalXtallDEXflat}}</td>
                                 <td>{{xtallINTflat}}</td>
                             </tr>
                             <tr class="table-secondary">
