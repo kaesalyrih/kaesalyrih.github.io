@@ -129,13 +129,14 @@ iframe {
 
 table {
   border-spacing: 1;
-  border-collapse: collapse;
+  border-color: darkgreen;
   background: white;
-  border-radius: 7px;
+  border-radius: 8px;
   overflow: hidden;
-  width: 70%;
+  width: auto;
   margin: 0 auto;
   position: relative;
+  text-align: center;
 }
 
 table * {
@@ -143,8 +144,6 @@ table * {
 }
 table td, table th {
   padding-left: 8px;
-  border: rgb(0, 0, 0);
-  border-width: thin;
 }
 table thead tr {
   height: 60px;
@@ -156,21 +155,6 @@ table tbody tr {
   height: 50px;
   font-weight: 500;
   color: rgb(78, 78, 78);
-}
-table tbody tr:last-child {
-  border: 0;
-}
-table td, table th {
-  text-align: left;
-}
-table td.l, table th.l {
-  text-align:  left;
-}
-table td.c, table th.c {
-  text-align: left;
-}
-table td.r, table th.r {
-  text-align: left;
 }
 
 
@@ -188,7 +172,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background-color: rgba(226, 226, 226, 0.658);;
+  background-color: rgba(112, 214, 61, 0.555);
   cursor: pointer;
 }
 
