@@ -8,6 +8,6 @@ Kaesa Lyrih adalah seseorang yang hobinya membuat informasi berupa panduan atau 
 
 ### Contact me
 
-[Gmail](mailto:kaesalyrih@gmail.com) (Dibuka saat ada keperluan)
-[Facebook](https://www.facebook.com/lyrihkaesa.official) (Aktif)
-[WhatsApp](https://wa.me/message/I7F7E2XCYFNTM1) (Aktif disaat tertentu)
+- [Gmail](mailto:kaesalyrih@gmail.com) (Dibuka saat ada keperluan)
+- [Facebook](https://www.facebook.com/lyrihkaesa.official) (Aktif)
+- [WhatsApp](https://wa.me/message/I7F7E2XCYFNTM1) (Aktif disaat tertentu)
